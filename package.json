@@ -1,0 +1,18 @@
+{
+  "name": "vador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrien Boullé",
+  "license": "MIT",
+  "dependencies": {
+    "hapi": "^16.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jscs": "^4.0.0"
+  }
+}
