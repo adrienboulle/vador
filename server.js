@@ -16,8 +16,8 @@ const server = new Hapi.Server({
 });
 
 server.connection({
-  host: 'localhost',
-  port: 8000,
+  host: '0.0.0.0',
+  port: 80,
 });
 
 server.register(Inert, () => {});
