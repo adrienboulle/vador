@@ -1,15 +1,10 @@
 node_modules
 aot
+app/**/*.js
+app/**/*.map
 public/build
 npm-debug.log
 .idea
 logs
 .DS_Store
 coverage
-.csv
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-!.elasticbeanstalk/config.yml
