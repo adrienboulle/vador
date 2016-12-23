@@ -16,8 +16,8 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
 # Install app dependencies
-RUN NODE_ENV="production" npm install --production
+RUN npm install --production
 
 EXPOSE 80
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "--production"]
