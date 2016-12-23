@@ -4,6 +4,8 @@ aot
 app/**/*.js
 app/**/*.map
 
+public/build/**/*.js
+
 npm-debug.log
 .idea
 logs

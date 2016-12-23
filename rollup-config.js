@@ -3,9 +3,11 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
 
+const cacheBuster = require('./gulp/cachbusting');
+
 export default {
   entry: 'app/main.js',
-  dest: 'public/build/build.js', // output a single application bundle
+  dest: 'public/build/build.' + cacheBuster()+ '.min.js', // output a single application bundle
   sourceMap: false,
   format: 'iife',
   plugins: [
