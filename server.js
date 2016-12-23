@@ -4,6 +4,8 @@ const Path = require('path');
 const Hapi = require('hapi');
 const Inert = require('inert');
 
+const config = require('./conf');
+
 // Create a server with a host and port
 const server = new Hapi.Server({
   connections: {
@@ -16,8 +18,8 @@ const server = new Hapi.Server({
 });
 
 server.connection({
-  host: '0.0.0.0',
-  port: 80,
+  host: config.env.server.host,
+  port: config.env.server.port,
 });
 
 server.register(Inert, () => {});

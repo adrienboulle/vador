@@ -6,6 +6,8 @@ app/**/*.map
 
 public/build/**/*.js
 
+config/production.js
+
 npm-debug.log
 .idea
 logs
