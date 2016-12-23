@@ -1,7 +1,7 @@
 'use strict';
 
 const gutil = require('gulp-util');
-const buster = require('./gulp/cachbusting')();
+const cacheBuster = require('./gulp/cachbusting')();
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -15,7 +15,7 @@ const config = (() => {
 
   config.env = require('./config/' + env);
   config.env.name = env;
-  config.env.buster = buster;
+  config.env.busterSuffix = config.env.name === 'production' ? '.' + cacheBuster() + '.min' : '';;
 
   gutil.log('Configuration file ' + gutil.colors.green(config.env.name + '.js') + ' loaded');
 

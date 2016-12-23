@@ -30,6 +30,7 @@ const rootHandler = function (request, reply) {
   reply.view('index', {
     cdn: config.env.cdn,
     server: config.env.server,
+    busterSuffix: config.env.busterSuffix,
   });
 };
 
