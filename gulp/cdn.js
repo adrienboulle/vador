@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 
 const s3 = require('gulp-s3-upload')({
-  accessKeyId: 'AKIAIRAGMY55262VTXGA',
+  accessKeyId: 'accessKeyId',
   region: 'eu-west-1',
-  secretAccessKey: 'TwVzJz6bjCa2/EOiF/i2sT4WwHp2Dqi3huZjlkg+',
+  secretAccessKey: 'secretAccessKey',
   sslEnabled: true,
 });
 
