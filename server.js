@@ -3,6 +3,8 @@
 const Path = require('path');
 const Hapi = require('hapi');
 const Inert = require('inert');
+const vision = require('vision');
+const ejs = require('ejs');
 
 const config = require('./conf');
 
@@ -23,6 +25,28 @@ server.connection({
 });
 
 server.register(Inert, () => {});
+
+const rootHandler = function (request, reply) {
+  reply.view('index', {
+    cdn: config.env.cdn,
+    server: config.env.server,
+  });
+};
+
+server.register(vision, err => {
+  if (err)
+    throw err;
+
+  server.views({
+    engines: {
+      ejs: ejs
+    },
+    relativeTo: __dirname,
+    path: 'templates'
+  });
+
+  server.route({ method: 'GET', path: '/', handler: rootHandler });
+});
 
 server.route({
   method: 'GET',

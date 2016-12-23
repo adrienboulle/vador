@@ -21,5 +21,12 @@
       </div>
     </my-app>
   </body>
-  <script src="build/build.js"></script>
+  <script>
+    window.cdn = {
+      one: '<%= cdn.one %>',
+      two: '<%= cdn.one %>',
+      three: '<%= cdn.one %>',
+    };
+  </script>
+  <script src="<%= server.protocol + cdn.one + ':' + server.port %>/build/build.js"></script>
 </html>
