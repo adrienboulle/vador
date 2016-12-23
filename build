@@ -1,0 +1,12 @@
+#!/bin/bash
+
+modulesCount=$(ls -l node_modules | wc -l)
+
+if [ "$modulesCount" -le 1 ]; then
+  npm install
+fi
+
+rm -rf aot/
+
+node_modules/.bin/ngc -p tsconfig-aot.json
+node_modules/.bin/rollup -c rollup-config.js

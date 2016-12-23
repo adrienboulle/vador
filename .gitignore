@@ -1,4 +1,6 @@
 node_modules
+aot
+public/build
 npm-debug.log
 .idea
 logs
