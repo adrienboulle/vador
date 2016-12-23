@@ -3,7 +3,6 @@ aot
 
 app/**/*.js
 app/**/*.map
-public/build
 
 npm-debug.log
 .idea
