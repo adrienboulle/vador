@@ -1,7 +1,7 @@
 'use strict';
 
 const gutil = require('gulp-util');
-const cacheBuster = require('./gulp/cachbusting')();
+const cacheBuster = require('./gulp/cachbusting');
 
 const env = process.env.NODE_ENV || 'development';
 
