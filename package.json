@@ -10,6 +10,7 @@
   "author": "Adrien Boullé",
   "license": "MIT",
   "dependencies": {
+    "child_process": "^1.0.2",
     "core-js": "^2.4.1",
     "ejs": "^2.5.5",
     "gulp-util": "^3.0.7",
@@ -32,7 +33,6 @@
     "@angular/router": "~3.4.0",
     "@types/jasmine": "^2.5.36",
     "@types/node": "^6.0.46",
-    "child_process": "^1.0.2",
     "crypto": "0.0.3",
     "gulp": "^3.9.1",
     "gulp-s3-upload": "^1.6.4",
