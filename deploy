@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git add -f .build
+git add -f config/production.js
+
+eb deploy --staged
+
+git reset HEAD
