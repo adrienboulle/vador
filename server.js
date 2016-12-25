@@ -13,7 +13,7 @@ const server = new Hapi.Server({
   connections: {
     routes: {
       files: {
-        relativeTo: Path.join(__dirname, 'public'),
+        relativeTo: Path.join(__dirname, '.build/public'),
       },
     },
   },
@@ -30,7 +30,6 @@ const rootHandler = function (request, reply) {
   reply.view('index', {
     cdn: config.env.cdn,
     server: config.env.server,
-    busterSuffix: config.env.busterSuffix,
   });
 };
 
@@ -43,7 +42,7 @@ server.register(vision, err => {
       ejs: ejs
     },
     relativeTo: __dirname,
-    path: 'templates'
+    path: '.build/templates'
   });
 
   server.route({ method: 'GET', path: '/', handler: rootHandler });

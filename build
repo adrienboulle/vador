@@ -7,6 +7,8 @@ if [ "$modulesCount" -le 1 ]; then
 fi
 
 rm -rf aot/
+rm -rf .build/
 
 node_modules/.bin/ngc -p tsconfig-aot.json
-node_modules/.bin/rollup -c rollup-config.js
+NODE_ENV=production node_modules/.bin/rollup -c rollup-config.js
+NODE_ENV=production node_modules/.bin/gulp prod
