@@ -4,7 +4,7 @@ const gulpS3 = require('gulp-s3-upload');
 
 const config = require('../../conf');
 
-gulp.task('upload:build', done => {
+gulp.task('upload', done => {
   if (config.env.name !== 'production')
     return done();
 

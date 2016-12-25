@@ -2,6 +2,7 @@
 
 modulesCount=$(ls -l node_modules | wc -l)
 env=''
+wcdn=''
 
 if [ "$modulesCount" -le 1 ]; then
   npm install
@@ -20,12 +21,33 @@ do
   esac
 done
 
+if [ "$wcdn" = "true" ]; then
+  while true; do
+    read -p "Do you really want to upload assets to CDN? (y/n) " yn
+    case $yn in
+      [Yy]*)
+        break
+        ;;
+      [Nn]*)
+        exit
+        ;;
+      *)
+        echo "Please answer yes or no."
+        ;;
+    esac
+  done
+fi
+
 case "$env" in
   "prod" | "production")
     echo "Build environment 'prod'";
     node_modules/.bin/ngc -p tsconfig-aot.json
-    node_modules/.bin/rollup -c rollup-config.js
-    gulp prod;
+    NODE_ENV=production node_modules/.bin/rollup -c rollup-config.js
+    NODE_ENV=production gulp prod;
+
+    if [ "$wcdn" = 'true' ]; then
+      NODE_ENV=production gulp upload
+    fi
     ;;
   "-h" | *)
     echo "$0 -e {prod|local}"
