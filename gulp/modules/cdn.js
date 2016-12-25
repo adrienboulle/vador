@@ -4,9 +4,9 @@ const gulpS3 = require('gulp-s3-upload');
 
 const config = require('../../conf');
 
-gulp.task('upload:build', () => {
+gulp.task('upload:build', done => {
   if (config.env.name !== 'production')
-    return;
+    return done();
 
   const s3 = gulpS3({
     accessKeyId: config.env.s3.accessKeyId,
@@ -15,7 +15,7 @@ gulp.task('upload:build', () => {
     sslEnabled: true,
   });
 
-  gulp.src(['public/build/*.js'])
+  gulp.src(['.build/public/**'], { base: '.build/public' })
   .pipe(s3({
     Bucket: 'elasticbeanstalk-eu-west-1-995892470641',
     ACL: 'public-read',
@@ -23,4 +23,5 @@ gulp.task('upload:build', () => {
   }, {
     maxRetries: 5,
   }))
+  .on('end', done);
 });
