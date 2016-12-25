@@ -43,7 +43,8 @@ server.register(vision, err => {
       ejs: ejs
     },
     relativeTo: __dirname,
-    path: '.build/templates'
+    path: '.build/templates',
+    isCached: config.env.name !== 'development',
   });
 
   server.route({ method: 'GET', path: '/', handler: rootHandler });

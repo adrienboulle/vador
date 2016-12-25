@@ -25,7 +25,6 @@ case "$env" in
     echo "Start environment 'prod'";
     tsc
     gulp local;
-    npm start
     ;;
   "-h" | *)
     echo "$0 -e {prod|local}"
