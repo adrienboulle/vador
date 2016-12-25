@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 
-gulp.task('prod', gulp.parallel([
-  'linker:prod',
+gulp.task('prod', gulp.series([
   'copy',
+  'linker:prod',
 ]));
