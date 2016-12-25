@@ -35,3 +35,32 @@ gulp.task('linker:prod', done =>
   .pipe(gulp.dest('.build/templates/'))
   .on('end', done)
 );
+
+
+gulp.task('linker:local', done =>
+  gulp.src([
+    'templates/**/*.ejs',
+  ])
+  .pipe(linker({
+    scripts: [
+      '.build/public/app.js',
+    ],
+    startTag: '<!--SCRIPTS APP HEAD-->',
+    endTag: '<!--SCRIPTS APP HEAD END-->',
+    fileTmpl: '<script  src="%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/node_modules/core-js/client/shim.min.js',
+      '.build/public/node_modules/zone.js/dist/zone.js',
+      '.build/public/node_modules/systemjs/dist/system.src.js',
+    ],
+    startTag: '<!--SCRIPTS DEP-->',
+    endTag: '<!--SCRIPTS DEP END-->',
+    fileTmpl: '<script src="' + prefixTwo + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(gulp.dest('.build/templates/'))
+  .on('end', done)
+);

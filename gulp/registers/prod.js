@@ -3,6 +3,6 @@
 const gulp = require('gulp');
 
 gulp.task('prod', gulp.series([
-  'copy',
+  'copy:prod',
   'linker:prod',
 ]));

@@ -21,11 +21,11 @@ do
 done
 
 case "$env" in
-  "prod" | "production")
-    echo "Build environment 'prod'";
-    node_modules/.bin/ngc -p tsconfig-aot.json
-    node_modules/.bin/rollup -c rollup-config.js
-    gulp prod;
+  "local" | "development")
+    echo "Start environment 'prod'";
+    tsc
+    gulp local;
+    npm start
     ;;
   "-h" | *)
     echo "$0 -e {prod|local}"

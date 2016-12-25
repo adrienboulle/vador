@@ -9,7 +9,17 @@
     <!--SCRIPTS DEP-->
     <!--SCRIPTS DEP END-->
 
+    <!--SCRIPTS APP HEAD-->
+    <!--SCRIPTS APP HEAD END-->
+
+    <% if (env === 'development') { %>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+    <% } else { %>
     <script>window.module = 'aot';</script>
+    <% } %>
+
   </head>
   <body>
     <my-app>
