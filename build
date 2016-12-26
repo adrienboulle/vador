@@ -43,7 +43,8 @@ case "$env" in
     echo "Build environment 'prod'";
     node_modules/.bin/ngc -p tsconfig-aot.json
     node_modules/.bin/rollup -c rollup-config.js
-    NODE_ENV=production gulp prod;
+
+    gulp prod;
 
     if [ "$wcdn" = 'true' ]; then
       NODE_ENV=production gulp upload

@@ -32,6 +32,15 @@ gulp.task('linker:prod', done =>
     fileTmpl: '<script src="' + prefixTwo + '/%s"></script>',
     appRoot: '.build/public/',
   }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/styles/*.min.css',
+    ],
+    startTag: '<!--STYLES APP-->',
+    endTag: '<!--STYLES APP END-->',
+    fileTmpl: '<link rel="stylesheet" href="%s">',
+    appRoot: '.build/public/',
+  }))
   .pipe(gulp.dest('.build/templates/'))
   .on('end', done)
 );
@@ -59,6 +68,15 @@ gulp.task('linker:local', done =>
     startTag: '<!--SCRIPTS DEP-->',
     endTag: '<!--SCRIPTS DEP END-->',
     fileTmpl: '<script src="' + prefixTwo + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/styles/styles.css',
+    ],
+    startTag: '<!--STYLES APP-->',
+    endTag: '<!--STYLES APP END-->',
+    fileTmpl: '<link rel="stylesheet" href="%s">',
     appRoot: '.build/public/',
   }))
   .pipe(gulp.dest('.build/templates/'))

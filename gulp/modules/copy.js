@@ -21,15 +21,6 @@ const js = {
   ],
 };
 
-const css = {
-  prod: [
-    'public/styles.css',
-  ],
-  local: [
-    'public/styles.css',
-  ],
-};
-
 const copyJs = (env, dest = '') => {
   const name = 'copy:js:' + env;
 
@@ -42,22 +33,9 @@ const copyJs = (env, dest = '') => {
   return name;
 };
 
-const copyCss = (env, dest = '') => {
-  const name = 'copy:css:' + env;
-
-  gulp.task(name, done =>
-    gulp.src(css[env], { base: '.' })
-    .pipe(gulp.dest('.build' + dest))
-    .on('end', done)
-  );
-
-  return name;
-};
-
 gulp.task('copy:prod',
   gulp.parallel([
     copyJs('prod'),
-    copyCss('prod'),
   ])
 );
 
@@ -65,6 +43,5 @@ gulp.task('copy:local',
   gulp.parallel([
     copyJs('local:public'),
     copyJs('local:app', '/public'),
-    copyCss('local'),
   ])
 );

@@ -27,5 +27,5 @@ case "$env" in
     gulp local;
     ;;
   "-h" | *)
-    echo "$0 -e {prod|local}"
+    echo "$0 -e {local}"
 esac

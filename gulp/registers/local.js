@@ -30,6 +30,7 @@ gulp.task('watch', done => {
 gulp.task('local',
   gulp.series([
     'copy:local',
+    'sass:local',
     'linker:local',
     'watch',
   ])
