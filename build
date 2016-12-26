@@ -44,7 +44,7 @@ case "$env" in
     node_modules/.bin/ngc -p tsconfig-aot.json
     node_modules/.bin/rollup -c rollup-config.js
 
-    gulp prod;
+    NODE_ENV=production gulp prod;
 
     if [ "$wcdn" = 'true' ]; then
       NODE_ENV=production gulp upload

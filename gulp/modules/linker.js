@@ -76,7 +76,7 @@ gulp.task('linker:local', done =>
     ],
     startTag: '<!--STYLES APP-->',
     endTag: '<!--STYLES APP END-->',
-    fileTmpl: '<link rel="stylesheet" href="%s">',
+    fileTmpl: '<link rel="stylesheet" href="' + prefixThree + '/%s">',
     appRoot: '.build/public/',
   }))
   .pipe(gulp.dest('.build/templates/'))

@@ -1,8 +1,5 @@
 'use strict';
 
-if (process.env.NODE_ENV === 'production')
-  return;
-
 const gulp = require('gulp');
 const jscs = require('gulp-jscs');
 
