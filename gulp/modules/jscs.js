@@ -7,9 +7,7 @@ gulp.task('lint:js', () =>
   gulp.src([
     '*/**.js',
 
-    '!app/**/*',
-    '!public/node_modules/**/*',
-    '!node_modules/**/*',
+    '!node_modules/**',
   ])
   .pipe(jscs())
   .pipe(jscs.reporter())

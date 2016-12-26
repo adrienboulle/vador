@@ -6,7 +6,7 @@ import uglify from 'rollup-plugin-uglify';
 const cacheBuster = require('./gulp/modules/cachbusting');
 
 export default {
-  entry: 'app/main.prod.js',
+  entry: 'src/app/main.prod.js',
   dest: '.build/public/build/build' + '.' + cacheBuster() + '.min' + '.js', // output a single application bundle
   sourceMap: false,
   format: 'iife',

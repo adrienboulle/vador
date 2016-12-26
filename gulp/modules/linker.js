@@ -11,7 +11,7 @@ const prefixThree = config.env.name === 'production' ? config.env.server.protoco
 
 gulp.task('linker:prod', done =>
   gulp.src([
-    'templates/**/*.ejs',
+    'src/templates/**/*.ejs',
   ])
   .pipe(linker({
     scripts: [
@@ -45,14 +45,13 @@ gulp.task('linker:prod', done =>
   .on('end', done)
 );
 
-
 gulp.task('linker:local', done =>
   gulp.src([
-    'templates/**/*.ejs',
+    'src/templates/**/*.ejs',
   ])
   .pipe(linker({
     scripts: [
-      '.build/public/app.js',
+      '.build/public/systemjs.config.app.js',
     ],
     startTag: '<!--SCRIPTS APP HEAD-->',
     endTag: '<!--SCRIPTS APP HEAD END-->',

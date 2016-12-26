@@ -21,7 +21,7 @@ const options = {
 };
 
 gulp.task('sass:local', () =>
-  gulp.src('public/styles/*.scss')
+  gulp.src('src/styles/*.scss')
   .pipe(sourcemaps.init())
   .pipe(sassGlob())
   .pipe(sass(options.sass).on('error', sass.logError))
@@ -32,7 +32,7 @@ gulp.task('sass:local', () =>
 );
 
 gulp.task('sass:prod', () =>
-  gulp.src('public/styles/*.scss')
+  gulp.src('src/styles/*.scss')
   .pipe(sassGlob())
   .pipe(sass(options.sass).on('error', sass.logError))
   .pipe(autoprefixer(options.autoprefixer))

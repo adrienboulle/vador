@@ -40,7 +40,7 @@ server.register(vision, err => {
 
   server.views({
     engines: {
-      ejs: ejs
+      ejs: ejs,
     },
     relativeTo: __dirname,
     path: '.build/templates',
