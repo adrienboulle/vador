@@ -7,6 +7,7 @@ gulp.task('lint:js', () =>
   gulp.src([
     '*/**.js',
 
+    '!.build',
     '!node_modules/**',
   ])
   .pipe(jscs())

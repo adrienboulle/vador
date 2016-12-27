@@ -6,10 +6,10 @@ import {Component} from '@angular/core';
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  showHeading = true;
-  heroes = ['Magneta', 'Bombasto', 'Magma', 'Tornado'];
+  public showHeading: boolean = true;
+  public heroes: string[] = ['Magneta', 'Bombasto', 'Magma', 'Tornado'];
 
-  toggleHeading() {
+  public toggleHeading() {
     this.showHeading = !this.showHeading;
   }
 }
