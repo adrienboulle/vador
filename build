@@ -8,8 +8,8 @@ if [ "$modulesCount" -le 1 ]; then
   npm install
 fi
 
-rm -rf aot/
-rm -rf .build/
+rm -rf .aot
+rm -rf .build
 
 while getopts ue: opt
 do

@@ -36,9 +36,9 @@
     "@types/jasmine": "^2.5.36",
     "@types/node": "^6.0.46",
     "crypto": "0.0.3",
-    "del": "^2.2.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean": "^0.3.2",
     "gulp-cli": "^1.2.2",
     "gulp-jscs": "^4.0.0",
     "gulp-linker": "^0.1.7",
@@ -65,6 +65,7 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rxjs": "^5.0.1",
+    "systemjs": "^0.19.41",
     "tslint": "^4.2.0",
     "typescript": "~2.0.10"
   }

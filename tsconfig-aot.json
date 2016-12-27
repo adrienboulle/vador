@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es2015", "dom"],
@@ -15,7 +15,7 @@
     "src/app/main.prod.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "aot",
+    "genDir": ".aot",
     "skipMetadataEmit" : true
   }
 }
