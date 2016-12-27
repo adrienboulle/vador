@@ -1,6 +1,6 @@
 branch-defaults:
-  master:
-    environment: vador-api-stage
+  production:
+    environment: vador-api
 global:
   application_name: vador-api
   default_ec2_keyname: ab-vador
