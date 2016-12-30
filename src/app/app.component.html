@@ -1,21 +1,28 @@
-<div class="row">
-  <h2>text</h2>
-</div>
-<div class="row">
-  <input [(ngModel)]="text">
-</div>
-<div class="row sep">
-  <h2>type</h2>
-</div>
-<div class="row">
-  <div *ngFor="let t of types">
-    <label>
-      <input type="radio"
-             [(ngModel)]="type"
-             [value]="t">&nbsp;{{t}}
-    </label>
+<div class="parent">
+  <div class="form">
+
+    <div class="text-container">
+      <label for="text">
+        <h2>Text</h2>
+      </label>
+      <input id="text" [(ngModel)]="text">
+    </div>
+
+    <div class="type-container">
+      <label for="type">
+        <h2>Type</h2>
+      </label>
+      <ul>
+        <li *ngFor="let t of types; let i = index">
+          <input id="{{i}}-option" type="radio" [(ngModel)]="type" [value]="t" name="selector">
+          <label for="{{i}}-option">{{t}}</label>
+          <div class="check"><div class="inside"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="btn-show-notif">
+      <button (click)="showNotif()">Show notification !</button>
+    </div>
   </div>
-</div>
-<div class="row sep-2">
-  <button (click)="showNotif()">Show notification !</button>
 </div>
