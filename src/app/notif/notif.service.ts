@@ -26,6 +26,10 @@ export class NotifService {
     }
   }
 
+  private capitalizeFirstLetter(word: string) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
   private createNotification(text: string, notifType: string) {
     const div: HTMLElement = window.document.createElement('div');
     div.classList.add('notif');
@@ -44,7 +48,7 @@ export class NotifService {
       div.classList.remove(type);
     });
     const span: HTMLElement = window.document.createElement('span');
-    span.innerHTML = text;
+    span.innerHTML = this.capitalizeFirstLetter(notifType) + ' :  ' + text;
     div.appendChild(span);
     window.document.body.appendChild(div);
     this.hide(div);
