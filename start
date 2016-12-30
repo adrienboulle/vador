@@ -22,8 +22,7 @@ done
 
 case "$env" in
   "local" | "development")
-    echo "Start environment 'prod'";
-    tsc
+    echo "Start environment 'local'";
     gulp local;
     ;;
   "-h" | *)

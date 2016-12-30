@@ -1,5 +1,21 @@
-<button (click)="toggleHeading()">Toggle Heading</button>
-<h1 *ngIf="showHeading">Hello :) !!</h1>
-
-<h3>List of Heroes</h3>
-<div *ngFor="let hero of heroes">{{hero}}</div>
+<div class="row">
+  <h2>text</h2>
+</div>
+<div class="row">
+  <input [(ngModel)]="text">
+</div>
+<div class="row sep">
+  <h2>type</h2>
+</div>
+<div class="row">
+  <div *ngFor="let t of types">
+    <label>
+      <input type="radio"
+             [(ngModel)]="type"
+             [value]="t">&nbsp;{{t}}
+    </label>
+  </div>
+</div>
+<div class="row sep-2">
+  <button (click)="showNotif()">Show notification !</button>
+</div>
