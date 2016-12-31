@@ -15,7 +15,7 @@ my-app {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('http://www.numerama.com/content/uploads/2015/10/darkvador.jpg');
+    background-image: url('http://iwallpapers.free.fr/upload/2016/01/01/20160101233352-3bc58277.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,6 +24,8 @@ my-app {
       border-radius: 0.2em;
       color: white;
       background-color: rgba(83, 91, 108, 0.96);
+      left: 12%;
+      position: absolute;
 
       .text-container {
         margin: 2em 2em 1em;
