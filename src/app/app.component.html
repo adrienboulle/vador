@@ -1,16 +1,16 @@
 <div class="parent">
   <div class="form">
-
+    <h1>Notifications Service</h1>
     <div class="text-container">
       <label for="text">
-        <h2>Text</h2>
+        <span>Text</span>
       </label>
       <input id="text" [(ngModel)]="text">
     </div>
 
     <div class="type-container">
       <label for="type">
-        <h2>Type</h2>
+        <span>Type</span>
       </label>
       <ul>
         <li *ngFor="let t of types; let i = index">

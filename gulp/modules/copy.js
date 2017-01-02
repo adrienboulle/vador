@@ -36,6 +36,16 @@ const src = {
       'src/**/*.ts',
     ],
   },
+  imgs: {
+    base: 'src',
+    dest: '.build/public',
+    prod: [
+      'src/imgs/**',
+    ],
+    local: [
+      'src/imgs/**',
+    ],
+  },
   systemjs: {
     base: 'src',
     dest: '.build/public',

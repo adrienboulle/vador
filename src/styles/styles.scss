@@ -1,3 +1,12 @@
+$infoMain: #e7f3fe;
+$infoSecond: #2196F3;
+
+$warnMain: #ffffcc;
+$warnSecond: #ffeb3b;
+
+$errorMain: #ffdddd;
+$errorSecond: #f44336;
+
 body {
   margin: 0;
   background-color: black;
@@ -203,8 +212,9 @@ my-app {
   }
 
   h1 {
-    color: #369;
-    font-size: 250%;
+    color: #4a7caf;
+    font-size: 200%;
+    text-align: center;
   }
 }
 
@@ -269,17 +279,17 @@ my-app {
   }
 
   &.info {
-    background-color: #e7f3fe;
-    border-left: 6px solid #2196F3;
+    background-color: $infoMain;
+    border-left: 6px solid $infoSecond;
   }
 
   &.warn {
-    background-color: #ffffcc;
-    border-left: 6px solid #ffeb3b;
+    background-color: $warnMain;
+    border-left: 6px solid $warnSecond;
   }
 
   &.error {
-    background-color: #ffdddd;
-    border-left: 6px solid #f44336;
+    background-color: $errorMain;
+    border-left: 6px solid $errorSecond;
   }
 }
