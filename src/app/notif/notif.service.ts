@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 
 declare let window: any;
 
@@ -10,7 +11,7 @@ export class NotifService {
     'error',
   ];
 
-  constructor() {}
+  constructor(private _sanitizer: DomSanitizer) {}
 
   public show(text: string, notificationType: string = this.types[0]) {
     this.createNotification(text, notificationType);
@@ -48,7 +49,8 @@ export class NotifService {
       div.classList.remove(type);
     });
     const span: HTMLElement = window.document.createElement('span');
-    span.innerHTML = this.capitalizeFirstLetter(notifType) + ' :  ' + text;
+    const innerSpan = this._sanitizer.sanitize(1, this.capitalizeFirstLetter(notifType) + ' :  ' + text);
+    span.innerHTML = innerSpan;
     div.appendChild(span);
     window.document.body.appendChild(div);
     this.hide(div);
