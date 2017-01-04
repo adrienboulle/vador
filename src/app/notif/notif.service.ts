@@ -58,6 +58,6 @@ export class NotifService {
     }, 0);
     setTimeout(() => {
       this.hide(div, true);
-    }, 2500);
+    }, 78892500);
   }
 }

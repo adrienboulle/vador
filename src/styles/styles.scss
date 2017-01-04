@@ -1,15 +1,12 @@
-$infoMain: #e7f3fe;
-$infoSecond: #2196F3;
+$info: #0069bd;
 
-$warnMain: #ffffcc;
-$warnSecond: #ffeb3b;
+$warn: #ccb700;
 
-$errorMain: #ffdddd;
-$errorSecond: #f44336;
+$error: #a90c00;
 
 $mainColor: #1e2b29;
 $secondColor: #4cb37b;
-$link: #b2b2b2;
+$grey: #b2b2b2;
 
 $speedS5: 2000ms;
 $speedS4: 1800ms;
@@ -50,7 +47,7 @@ header {
           position: relative;
 
           a {
-            color: $link;
+            color: $grey;
             cursor: default;
             text-decoration: none;
             transition: all $speedF3;
@@ -71,7 +68,7 @@ header {
         &:hover {
           .link {
             a {
-              color: lighten($link, 25%);
+              color: lighten($grey, 25%);
               transition: all $speedF3;
             }
 
@@ -368,19 +365,18 @@ notif {
   font-size: 1.2em;
   padding: 0 1em;
   white-space: nowrap;
+  color: lighten($grey, 25%);
+  background-color: lighten(#1e2b29, 8%);
 
   &.info {
-    background-color: $infoMain;
-    border-left: 6px solid $infoSecond;
+    border-left: 6px solid $info;
   }
 
   &.warn {
-    background-color: $warnMain;
-    border-left: 6px solid $warnSecond;
+    border-left: 6px solid $warn;
   }
 
   &.error {
-    background-color: $errorMain;
-    border-left: 6px solid $errorSecond;
+    border-left: 6px solid $error;
   }
 }
