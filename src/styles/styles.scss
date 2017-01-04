@@ -7,8 +7,8 @@ $warnSecond: #ffeb3b;
 $errorMain: #ffdddd;
 $errorSecond: #f44336;
 
-$mainColor: rgba(83,91,108,0.96);
-$secondColor: rgba(119, 132, 158, 0.96);
+$mainColor: #1e2b29;
+$secondColor: #4cb37b;
 $link: #b2b2b2;
 
 $speedS5: 2000ms;
@@ -30,14 +30,16 @@ body {
 
 header {
   .menu {
-    padding: 0 1.3em;
-    border-bottom: solid 3px lighten($mainColor, 10%);
+    height: 3.5em;
+    padding-left: 1.3em;
+    border-bottom: solid 1px $secondColor;
     background-color: $mainColor;
     display: flex;
     align-items: center;
 
     .link-container {
       border-left: solid 0 transparent;
+      white-space: nowrap;
 
       .link-wrapper {
         margin: 1em;
@@ -58,7 +60,7 @@ header {
             content: '';
             position: absolute;
             top: 100%;
-            bottom: -0.2rem;
+            bottom: -1px;
             width: 0;
             background-color: transparent;
             transition: all $speedF3;
@@ -77,9 +79,9 @@ header {
               content: '';
               position: absolute;
               top: 100%;
-              bottom: -0.1rem;
+              bottom: -1px;
               width: 100%;
-              background-color: lighten($link, 25%);
+              background-color: $secondColor;
               transition: all $speedF3;
             }
           }
@@ -93,6 +95,13 @@ header {
           }
         }
       }
+    }
+
+    .notif-container {
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      position: relative;
     }
   }
 }
@@ -351,16 +360,14 @@ notif {
 }
 
 .notif {
-  margin-bottom: 15px;
-  position: fixed;
-  top: 10px;
-  padding: 0.6em 1em;
-  right: 10px;
-
-  span {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2em;
-  }
+  position: absolute;
+  right: 0;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  font-size: 1.2em;
+  padding: 0 1em;
+  white-space: nowrap;
 
   &.info {
     background-color: $infoMain;

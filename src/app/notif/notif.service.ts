@@ -22,7 +22,7 @@ export class NotifService {
     div.style.right = '-' + (10 + div.clientWidth) + 'px';
     if (remove) {
       setTimeout(() => {
-        window.document.body.removeChild(div);
+        window.document.getElementsByClassName('notif-container')[0].removeChild(div);
       }, 750);
     }
   }
@@ -48,11 +48,9 @@ export class NotifService {
 
       div.classList.remove(type);
     });
-    const span: HTMLElement = window.document.createElement('span');
-    const innerSpan = this._sanitizer.sanitize(1, this.capitalizeFirstLetter(notifType) + ' :  ' + text);
-    span.innerHTML = innerSpan;
-    div.appendChild(span);
-    window.document.body.appendChild(div);
+    const innerDiv = this._sanitizer.sanitize(1, this.capitalizeFirstLetter(notifType) + ' :  ' + text);
+    div.innerHTML = innerDiv;
+    window.document.getElementsByClassName('notif-container')[0].appendChild(div);
     this.hide(div);
     setTimeout(() => {
       div.style.transitionDuration = '0.75s';
