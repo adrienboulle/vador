@@ -43,15 +43,25 @@ header {
         margin: 1em;
 
         .link {
-          padding: 0.3em;
           border-left: solid transparent 0;
-          transition: all $speedF4;
+          transition: all $speedF3;
+          position: relative;
 
           a {
             color: $link;
             cursor: default;
             text-decoration: none;
-            transition: all $speedF4;
+            transition: all $speedF3;
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            bottom: -0.2rem;
+            width: 0;
+            background-color: transparent;
+            transition: all $speedF3;
           }
         }
 
@@ -60,15 +70,23 @@ header {
           .link {
             a {
               color: lighten($link, 25%);
-              transition: all $speedF4;
+              transition: all $speedF3;
+            }
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 100%;
+              bottom: -0.1rem;
+              width: 100%;
+              background-color: lighten($link, 25%);
+              transition: all $speedF3;
             }
           }
         }
 
         &:hover {
           .link {
-            border-left: solid lighten($link, 25%) 0.3rem;
-
             a {
               cursor: pointer;
             }
