@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
-
+    <base href="/">
     <!--SCRIPTS DEP-->
     <!--SCRIPTS DEP END-->
 
@@ -15,7 +15,7 @@
     <!--STYLES APP-->
     <!--STYLES APP END-->
 
-    <% if (env === 'development') { %>
+    <% if (!min) { %>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
@@ -25,7 +25,7 @@
 
   </head>
   <body>
-    <my-app>
+    <app>
       <div class="loader-container">
         <div class="loader-wrapper">
           <div class="loader"></div>
@@ -34,7 +34,7 @@
           <div class="loader-2"></div>
         </div>
       </div>
-    </my-app>
+    </app>
   </body>
   <script>
     window.cdn = {

@@ -30,7 +30,7 @@ const rootHandler = function (request, reply) {
   reply.view('index', {
     cdn: config.env.cdn,
     server: config.env.server,
-    env: config.env.name,
+    min: config.env.min,
   });
 };
 
@@ -48,11 +48,13 @@ server.register(vision, err => {
   });
 
   server.route({ method: 'GET', path: '/', handler: rootHandler });
+  server.route({ method: 'GET', path: '/notif', handler: rootHandler });
+  server.route({ method: 'GET', path: '/kix-like', handler: rootHandler });
 });
 
 server.route({
   method: 'GET',
-  path: '/{param*}',
+  path: '/{files*}',
   handler: {
     directory: {
       path: '.',

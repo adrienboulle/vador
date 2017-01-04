@@ -39,6 +39,13 @@ if [ "$wcdn" = "true" ]; then
 fi
 
 case "$env" in
+  "local" | "dev" | "development")
+    echo "Build environment 'local'";
+    node_modules/.bin/ngc -p tsconfig-aot.json
+    node_modules/.bin/rollup -c rollup-config.js
+
+    NODE_ENV=development gulp prod;
+    ;;
   "prod" | "production")
     echo "Build environment 'prod'";
     node_modules/.bin/ngc -p tsconfig-aot.json

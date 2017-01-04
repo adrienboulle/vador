@@ -14,6 +14,7 @@ const config = (() => {
 
   config.env = require('./config/' + env);
   config.env.name = env;
+  config.env.min = process.env.NODE_ENV === 'production' || process.env.MIN === 'true';
 
   gutil.log('Configuration file ' + gutil.colors.green(config.env.name + '.js') + ' loaded');
 

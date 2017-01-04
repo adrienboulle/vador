@@ -7,20 +7,86 @@ $warnSecond: #ffeb3b;
 $errorMain: #ffdddd;
 $errorSecond: #f44336;
 
+$mainColor: rgba(83,91,108,0.96);
+$secondColor: rgba(119, 132, 158, 0.96);
+$link: #b2b2b2;
+
+$speedS5: 2000ms;
+$speedS4: 1800ms;
+$speedS3: 1600ms;
+$speedS2: 1400ms;
+$speedS1: 1200ms;
+$speed:   1000ms;
+$speedF1:  800ms;
+$speedF2:  600ms;
+$speedF3:  400ms;
+$speedF4:  200ms;
+
 body {
   margin: 0;
   background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-my-app {
-  font-family: Arial, Helvetica, sans-serif;
+header {
+  .menu {
+    padding: 0 1.3em;
+    border-bottom: solid 3px lighten($mainColor, 10%);
+    background-color: $mainColor;
+    display: flex;
+    align-items: center;
+
+    .link-container {
+      border-left: solid 0 transparent;
+
+      .link-wrapper {
+        margin: 1em;
+
+        .link {
+          padding: 0.3em;
+          border-left: solid transparent 0;
+          transition: all $speedF4;
+
+          a {
+            color: $link;
+            cursor: default;
+            text-decoration: none;
+            transition: all $speedF4;
+          }
+        }
+
+        &.active,
+        &:hover {
+          .link {
+            a {
+              color: lighten($link, 25%);
+              transition: all $speedF4;
+            }
+          }
+        }
+
+        &:hover {
+          .link {
+            border-left: solid lighten($link, 25%) 0.3rem;
+
+            a {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+notif {
   font-size: 130%;
 
   .parent {
     top: 0;
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
