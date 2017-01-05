@@ -20,7 +20,8 @@ export class NotifService {
   public hide(div: HTMLElement, remove: boolean = false) {
     div.style.transitionTimingFunction = 'ease-in';
     div.style.right = '-' + (10 + div.clientWidth) + 'px';
-    if (remove) {
+    if (remove && !div.hasAttribute('removed')) {
+      div.setAttribute('removed', '');
       setTimeout(() => {
         window.document.getElementsByClassName('notif-container')[0].removeChild(div);
       }, 750);
@@ -32,32 +33,64 @@ export class NotifService {
   }
 
   private createNotification(text: string, notifType: string) {
-    const div: HTMLElement = window.document.createElement('div');
-    div.classList.add('notif');
-    div.style.right = '-1000px';
-    div.style.transitionTimingFunction = 'ease-out';
-    div.style.transitionProperty = 'right';
-    div.style.transitionDuration = '0s';
-    div.addEventListener('click', () => {
-      this.hide(div, true);
+    const mainDiv: HTMLElement = window.document.createElement('div');
+    mainDiv.classList.add('notif');
+    mainDiv.classList.add(notifType);
+    mainDiv.style.right = '-1000px';
+    mainDiv.style.transitionTimingFunction = 'ease-out';
+    mainDiv.style.transitionProperty = 'right';
+    mainDiv.style.transitionDuration = '0s';
+    mainDiv.innerText = this._sanitizer.sanitize(1, this.capitalizeFirstLetter(notifType) + ' :  ' + text);
+    const crossDivContainet: HTMLElement = window.document.createElement('div');
+    crossDivContainet.classList.add('kill-container');
+    crossDivContainet.addEventListener('mouseover', () => {
+      crossDivContainet.classList.remove('wiggle-end');
+
+      if (!crossDivContainet.classList.contains('wiggle-right') && !crossDivContainet.classList.contains('wiggle-left'))
+        crossDivContainet.classList.add('wiggle-right');
     });
-    div.classList.add(notifType);
+    crossDivContainet.addEventListener('animationend', () => {
+      if (crossDivContainet.classList.contains('wiggle-end')) {
+        crossDivContainet.classList.remove('wiggle-right');
+        crossDivContainet.classList.remove('wiggle-left');
+        crossDivContainet.classList.remove('wiggle-end');
+      } else if (crossDivContainet.classList.contains('wiggle-right')) {
+        crossDivContainet.classList.remove('wiggle-right');
+        crossDivContainet.classList.add('wiggle-left');
+      } else {
+        crossDivContainet.classList.add('wiggle-right');
+        crossDivContainet.classList.remove('wiggle-left');
+      }
+    });
+    crossDivContainet.addEventListener('mouseleave', () => {
+      crossDivContainet.classList.add('wiggle-end');
+    });
+    crossDivContainet.addEventListener('animationend', () => console.log(1), false);
+    const crossDiv: HTMLElement = window.document.createElement('div');
+    crossDiv.classList.add('kill');
+    const crossI: HTMLElement = window.document.createElement('i');
+    crossI.classList.add('r-90');
+    crossI.classList.add('com-icon-Down-11-solid');
+    crossDiv.appendChild(crossI);
+    crossDivContainet.appendChild(crossDiv);
+    crossDivContainet.addEventListener('click', () => {
+      this.hide(mainDiv, true);
+    });
+    mainDiv.appendChild(crossDivContainet);
     this.types.forEach(type => {
       if (type === notifType)
         return;
 
-      div.classList.remove(type);
+      mainDiv.classList.remove(type);
     });
-    const innerDiv = this._sanitizer.sanitize(1, this.capitalizeFirstLetter(notifType) + ' :  ' + text);
-    div.innerHTML = innerDiv;
-    window.document.getElementsByClassName('notif-container')[0].appendChild(div);
-    this.hide(div);
+    window.document.getElementsByClassName('notif-container')[0].appendChild(mainDiv);
+    this.hide(mainDiv);
     setTimeout(() => {
-      div.style.transitionDuration = '0.75s';
-      div.style.right = null;
+      mainDiv.style.transitionDuration = '0.75s';
+      mainDiv.style.right = null;
     }, 0);
     setTimeout(() => {
-      this.hide(div, true);
-    }, 78892500);
+      this.hide(mainDiv, true);
+    }, 500000);
   }
 }

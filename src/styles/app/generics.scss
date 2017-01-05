@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  background-color: $backgroundColor;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+[class^="icon-"], [class*=" icon-"], [class*=" com-icon-"], [class*=" com-icon-"] {
+  &:before {
+    display: inline-block;
+  }
+
+  &.r90 {
+    &:before {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.r180 {
+    &:before {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.r-90 {
+    &:before {
+      transform: rotate(-90deg);
+    }
+  }
+}

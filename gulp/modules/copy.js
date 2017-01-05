@@ -46,6 +46,16 @@ const src = {
       'src/imgs/**',
     ],
   },
+  fonts: {
+    base: 'src',
+    dest: '.build/public',
+    prod: [
+      'src/fonts/**',
+    ],
+    local: [
+      'src/fonts/**',
+    ],
+  },
   systemjs: {
     base: 'src',
     dest: '.build/public',

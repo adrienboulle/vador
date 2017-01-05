@@ -21,7 +21,7 @@ const options = {
 };
 
 gulp.task('sass:local', () =>
-  gulp.src('src/styles/*.scss')
+  gulp.src('src/styles/styles.scss')
   .pipe(sourcemaps.init())
   .pipe(sassGlob())
   .pipe(sass(options.sass).on('error', sass.logError))
