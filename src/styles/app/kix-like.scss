@@ -1,0 +1,44 @@
+kix-like {
+  background: white;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+  .parent {
+    margin: 4em;
+    color: black;
+
+    span {
+      white-space: pre;
+    }
+  }
+
+  .cursor {
+    position: fixed;
+    background-color: black;
+    width: 2px;
+    height: 20px;
+    animation: blink 1.1s cubic-bezier(0, 1, 0, 1) infinite;
+  }
+
+  .outside {
+    position: fixed;
+    left: -3px;
+    top: -3px;
+    white-space: pre;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
