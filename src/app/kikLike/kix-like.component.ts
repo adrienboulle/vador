@@ -9,7 +9,7 @@ import {Component} from '@angular/core';
   templateUrl: 'kix-like.component.html',
 })
 export class KixLikeComponent {
-  private groups: string[];
+  public groups: string[];
   private cursorWidthsDelta: number[];
   private pos: number;
   private movingTimeout: any;
