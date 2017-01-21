@@ -12,6 +12,7 @@ export class KixLikeComponent {
   private groups: string[];
   private cursorWidthsDelta: number[];
   private pos: number;
+  private movingTimeout: any;
 
   constructor() {
     this.groups = ['Random text to test'];
@@ -50,11 +51,23 @@ export class KixLikeComponent {
       this.cursorWidthsDelta.splice(this.pos + 1, 1);
     }
 
-    if (keyCode === 37)
+    if (keyCode === 37) {
       this.goLeft();
+      document.getElementById('cursor').classList.add('plain');
+      clearTimeout(this.movingTimeout);
+      this.movingTimeout = setTimeout(() => {
+        document.getElementById('cursor').classList.remove('plain');
+      }, 500);
+    }
 
-    if (keyCode === 39)
+    if (keyCode === 39) {
       this.goRight();
+      document.getElementById('cursor').classList.add('plain');
+      clearTimeout(this.movingTimeout);
+      this.movingTimeout = setTimeout(() => {
+        document.getElementById('cursor').classList.remove('plain');
+      }, 500);
+    }
   }
 
   public handleCursor(event: MouseEvent): void {
