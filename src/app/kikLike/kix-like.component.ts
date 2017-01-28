@@ -41,32 +41,26 @@ export class KixLikeComponent {
 
       this.groups[this.groups.length - 1] = [this.groups[this.groups.length - 1].slice(0, this.pos + 1), event.key, this.groups[this.groups.length - 1].slice(this.pos + 1)].join('');
       this.cursorWidthsDelta.splice(this.pos + 1, 0, tmpSpan.offsetWidth);
+      this.pauseCursorBlink();
       this.goRight();
       outside.removeChild(tmpSpan);
     }
 
     if (keyCode === 8) {
       this.goLeft();
+      this.pauseCursorBlink();
       this.groups[this.groups.length - 1] = this.groups[this.groups.length - 1].slice(0, this.pos + 1) + this.groups[this.groups.length - 1].slice(this.pos + 2);
       this.cursorWidthsDelta.splice(this.pos + 1, 1);
     }
 
     if (keyCode === 37) {
       this.goLeft();
-      document.getElementById('cursor').classList.add('plain');
-      clearTimeout(this.movingTimeout);
-      this.movingTimeout = setTimeout(() => {
-        document.getElementById('cursor').classList.remove('plain');
-      }, 500);
+      this.pauseCursorBlink();
     }
 
     if (keyCode === 39) {
       this.goRight();
-      document.getElementById('cursor').classList.add('plain');
-      clearTimeout(this.movingTimeout);
-      this.movingTimeout = setTimeout(() => {
-        document.getElementById('cursor').classList.remove('plain');
-      }, 500);
+      this.pauseCursorBlink();
     }
   }
 
@@ -128,5 +122,13 @@ export class KixLikeComponent {
 
   private getNumberFromPxStr(pxStr: string): number {
     return pxStr.indexOf('px') !== -1 ? Number(pxStr.slice(0, -2)) : 0;
+  }
+
+  private pauseCursorBlink(): void {
+    document.getElementById('cursor').classList.add('plain');
+    clearTimeout(this.movingTimeout);
+    this.movingTimeout = setTimeout(() => {
+      document.getElementById('cursor').classList.remove('plain');
+    }, 500);
   }
 }
