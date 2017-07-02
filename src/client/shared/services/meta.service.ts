@@ -1,7 +1,7 @@
 import { Injectable, Renderer2, ViewEncapsulation, RendererFactory2 } from '@angular/core';
 import { PlatformState } from '@angular/platform-server';
 
-import { RendererTools } from '../tools/rendererTools.helper';
+import { RendererTools } from '../tools/RendererTools';
 
 export const metaDescriptions = {
   description: {

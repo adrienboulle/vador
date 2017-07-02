@@ -4,7 +4,7 @@ import { RouterModule, Route } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { LangService } from '../shared/services/lang.service';
+import { I18nService } from '../shared/services/i18n.service';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +23,7 @@ export const ROUTES: Route[] = [
       provide: LocationStrategy,
       useClass: PathLocationStrategy,
     },
-    LangService,
+    I18nService,
   ],
   declarations: [
     AppComponent,

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { LocationStrategy } from '@angular/common';
 
+import { TradsHelper } from '../tools/TradsHelper';
+
 @Injectable()
-export class LangService {
+export class I18nService {
   private _lang: string;
 
   constructor(locationStrategy: LocationStrategy) {
@@ -17,5 +19,9 @@ export class LangService {
 
   public get lang(): string {
     return this._lang;
+  }
+
+  public translate(key: string): string {
+    return TradsHelper.getTrads(this.lang)[key];
   }
 }

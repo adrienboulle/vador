@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_CONFIG } from './config/config';
 import { config } from './config/base.conf';
 
+import { I18n } from './pipes/i18n.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,11 +18,15 @@ import { config } from './config/base.conf';
   providers: [
     { provide: APP_CONFIG, useValue: config },
   ],
+  declarations: [
+    I18n,
+  ],
   exports: [
     CommonModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    I18n,
   ],
 })
 export class SharedModule {}

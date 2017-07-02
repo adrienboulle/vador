@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { Router, Event, NavigationEnd } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { AppModule } from './app.module';
 
 import { AppComponent } from './app.component';
 
-import { getPageData } from '../../server/tools/MetaHelper';
+import { MetaHelper } from '../../server/tools/MetaHelper';
 
-import { LangService } from '../shared/services/lang.service';
+import { I18nService } from '../shared/services/i18n.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -21,10 +20,10 @@ import { LangService } from '../shared/services/lang.service';
   ],
 })
 export class AppBrowserModule {
-  constructor(titleService: Title, router: Router, langService: LangService) {
+  constructor(titleService: Title, router: Router, i18nService: I18nService) {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        titleService.setTitle(getPageData(event.url, langService.lang).title);
+        titleService.setTitle(i18nService.translate(MetaHelper.getPageData(event.url).title));
       }
     });
   }
