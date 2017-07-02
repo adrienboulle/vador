@@ -7,9 +7,9 @@ module.exports = {
   name: 'production',
 
   cdn: {
-    one: 'http://adrien.tech.com/', // TODO: HTTPS
-    two: 'http://adrien.tech.com/', // TODO: HTTPS
-    three: 'http://adrien.tech.com/', // TODO: HTTPS
+    one: 'http://adrien.tech.com', // TODO: HTTPS
+    two: 'http://adrien.tech.com', // TODO: HTTPS
+    three: 'http://adrien.tech.com', // TODO: HTTPS
   },
 
   site: {
@@ -20,9 +20,9 @@ module.exports = {
   },
 
   S3: {
-    accessKeyId: 'AKIAINSDDM364J437AFA',
+    accessKeyId: 'AKIAJ6MV6YREB44OKFHQ',
     region: 'eu-west-1',
-    secretAccessKey: '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',
+    secretAccessKey: '1KX5mjmqFY4a1iNBhSjsFpYqeirJlZvgAI2HKP73',
     sslEnabled: true,
     bucketName: 'elasticbeanstalk-eu-west-1-995892470641',
   },

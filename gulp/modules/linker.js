@@ -8,9 +8,9 @@ let cdn2 = '';
 let cdn3 = '';
 let withCdn = false;
 
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+if (process.env.NODE_ENV === 'production') {
   withCdn = true;
-  const config = require('../../src/server/config/env/' + process.env.NODE_ENV);
+  const config = require('../../src/server/config/env/production');
   cdn1 = config.cdn.one;
   cdn2 = config.cdn.two;
   cdn3 = config.cdn.three;
@@ -59,7 +59,7 @@ const linkStyles = gulp =>
     ],
     startTag: '<!--STYLES-->',
     endTag: '<!--STYLES END-->',
-    fileTmpl: '<link rel="stylesheet" href="' + cdn1 + '%s">',
+    fileTmpl: '<link rel="stylesheet" href="' + cdn1 + '/%s">',
     appRoot: '.build/public/',
   }))
   .pipe(gulp.dest('.build/private/src/views'));

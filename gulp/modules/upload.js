@@ -7,9 +7,9 @@ const config = require('../../src/server/config/env/production');
 
 const s3 = gulpS3({
   accessKeyId: config.S3.accessKeyId,
-  region: 'eu-west-1',
+  region: config.S3.region,
   secretAccessKey: config.S3.secretAccessKey,
-  sslEnabled: true,
+  sslEnabled: config.S3.sslEnabled,
 });
 
 const upload = gulp =>
@@ -17,7 +17,7 @@ const upload = gulp =>
     new Promise((resolve, reject) =>
       gulp.src(['.build/public/js/**', '.build/public/styles/**'], { base: '.build/public' })
       .pipe(s3({
-        Bucket: 'elasticbeanstalk-eu-west-1-995892470641',
+        Bucket: config.S3.bucketName,
         ACL: 'public-read',
         CacheControl: 'max-age=2628000,public',
       }, {
