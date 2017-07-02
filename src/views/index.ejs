@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <title>Ahead of time compilation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <base href="<%= baseHref %>">
+
+    <!--SCRIPTS DEP-->
+    <!--SCRIPTS DEP END-->
+
+    <!--SCRIPTS APP HEAD-->
+    <!--SCRIPTS APP HEAD END-->
+
+    <!--STYLES APP-->
+    <!--STYLES APP END-->
+
+    <% if (!min) { %>
+      <script>
+        System.import('app').catch(function(err){ console.error(err); });
+      </script>
+    <% } else { %>
+      <script>window.module = 'aot';</script>
+    <% } %>
+
+  </head>
+
+  <body>
+    <app>
+    </app>
+  </body>
+
+  <script>
+    window.cdn = {
+      one: '<%= CONF.env.cdn.one %>',
+      two: '<%= CONF.env.cdn.one %>',
+      three: '<%= CONF.env.cdn.one %>',
+    };
+  </script>
+
+  <% include ./partials/scripts %>
+
+</html>

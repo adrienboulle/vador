@@ -1,15 +1,9 @@
 #!/bin/bash
 
-modulesCount=$(ls -l node_modules | wc -l)
-env=''
-wcdn=''
-
-if [ "$modulesCount" -le 1 ]; then
-  npm install
-fi
-
-rm -rf .aot
 rm -rf .build
+
+env=local
+wcdn=''
 
 while getopts ue: opt
 do
@@ -20,6 +14,8 @@ do
     ;;
   esac
 done
+
+export NODE_ENV=$env
 
 if [ "$wcdn" = "true" ]; then
   while true; do
@@ -38,25 +34,19 @@ if [ "$wcdn" = "true" ]; then
   done
 fi
 
-case "$env" in
-  "local" | "dev" | "development")
-    echo "Build environment 'local'";
-    node_modules/.bin/ngc -p tsconfig-aot.json
-    node_modules/.bin/rollup -c rollup-config.js
+mkdir .build
+mkdir .build/src
 
-    NODE_ENV=development gulp prod;
-    ;;
-  "prod" | "production")
-    echo "Build environment 'prod'";
-    node_modules/.bin/ngc -p tsconfig-aot.json
-    node_modules/.bin/rollup -c rollup-config.js
+cp -r src/ .build/src/
 
-    NODE_ENV=production gulp prod;
+node_modules/.bin/ngc -p tsconfig.json
+node_modules/.bin/tsc -p tsconfig.json
 
-    if [ "$wcdn" = 'true' ]; then
-      NODE_ENV=production gulp upload
-    fi
-    ;;
-  "-h" | *)
-    echo "$0 -e {prod|local}"
-esac
+node_modules/.bin/webpack --config webpack/webpack.polyfills.config.js
+node_modules/.bin/webpack --config webpack/webpack.server.config.js
+node_modules/.bin/webpack --config webpack/webpack.home.config.js
+node_modules/.bin/webpack --config webpack/webpack.contact.config.js
+
+if [ "$NODE_ENV" = "local" ]; then
+  node_modules/.bin/nodemon .build/public/server-bundle.js
+fi

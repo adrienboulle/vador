@@ -3,11 +3,18 @@
 const gulp = require('gulp');
 const linker = require('gulp-linker');
 
-const config = require('../../conf');
+let cdn1 = '';
+let cdn2 = '';
+let cdn3 = '';
+let withCdn = false;
 
-const prefixOne = config.env.name === 'production' ? config.env.server.protocol + config.env.cdn.one : '';
-const prefixTwo = config.env.name === 'production' ? config.env.server.protocol + config.env.cdn.two : '';
-const prefixThree = config.env.name === 'production' ? config.env.server.protocol + config.env.cdn.three : '';
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  withCdn = true;
+  const cfg = require('../../src/server/config/env/' + process.env.NODE_ENV);
+  cdn1 = cfg.cdn.one;
+  cdn2 = cfg.cdn.two;
+  cdn3 = cfg.cdn.three;
+}
 
 gulp.task('linker:prod', done =>
   gulp.src([
@@ -81,3 +88,21 @@ gulp.task('linker:local', done =>
   .pipe(gulp.dest('.build/templates/'))
   .on('end', done)
 );
+
+const linkJs = gulp =>
+  gulp.src([
+    '.build/src/views/**/*ejs',
+  ])
+  .pipe(linker({
+    scripts: [
+      '.build/public/build/*.min.js',
+    ],
+    startTag: '<!--SCRIPTS APP-->',
+    endTag: '<!--SCRIPTS APP END-->',
+    fileTmpl: '<script  src="' + prefixOne + '/%s"></script>',
+    appRoot: '.build/src/views/',
+  }));
+
+module.exports = {
+  js: gulp => () => linkJs(gulp),
+};

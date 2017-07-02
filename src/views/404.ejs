@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ahead of time compilation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <base href="/">
+
+    <!--SCRIPTS DEP-->
+    <!--SCRIPTS DEP END-->
+
+    <!--SCRIPTS APP HEAD-->
+    <!--SCRIPTS APP HEAD END-->
+
+    <!--STYLES APP-->
+    <!--STYLES APP END-->
+  </head>
+
+  <body>
+    <h1>OOPS</h1>
+  </body>
+
+  <script>
+    window.cdn = {
+      one: '<%= CONF.env.cdn.one %>',
+      two: '<%= CONF.env.cdn.one %>',
+      three: '<%= CONF.env.cdn.one %>',
+    };
+  </script>
+
+  <!--SCRIPTS APP-->
+  <!--SCRIPTS APP END-->
+
+</html>

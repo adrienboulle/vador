@@ -27,7 +27,7 @@
     ],
     "interface-name": [
       true,
-      "always-prefix"
+      "never-prefix"
     ],
     "jsdoc-format": true,
     "label-position": true,
@@ -69,15 +69,12 @@
     ],
     "no-namespace": false,
     "no-reference": true,
-    "no-require-imports": true,
     "no-shadowed-variable": false,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": false,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
     "no-var-keyword": true,
-    "no-var-requires": true,
     "object-literal-sort-keys": false,
     "one-line": [
       true,

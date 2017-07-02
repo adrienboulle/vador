@@ -13,7 +13,6 @@ gulp.task('watch', done => {
     'src/app/**/*.ts',
     'src/**/*.html',
   ], { interval: WATCH_INTERVAL }, gulp.series([
-    'compile',
     'copy:local',
   ]));
 
@@ -48,7 +47,6 @@ gulp.task('watch', done => {
 
 gulp.task('local',
   gulp.series([
-    'compile',
     'copy:local',
     'sass:local',
     'linker:local',

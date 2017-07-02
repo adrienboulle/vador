@@ -1,0 +1,10 @@
+<script src="<%= CONF.env.cdn.one %>/polyfills-bundle.js"></script>
+
+<% switch (req.url) {
+  case '/': %>
+    <script src="<%= CONF.env.cdn.one %>/home-bundle.js"></script>
+<%
+    break;
+  case '/contact': %>
+    <script src="<%= CONF.env.cdn.one %>/contact-bundle.js"></script>
+<% } %>
