@@ -7,14 +7,14 @@ module.exports = {
   name: 'production',
 
   cdn: {
-    one: 'https://assets1.heek.com',
-    two: 'https://assets2.heek.com',
-    three: 'https://assets3.heek.com',
+    one: 'http://adrien.tech.com/', // TODO: HTTPS
+    two: 'http://adrien.tech.com/', // TODO: HTTPS
+    three: 'http://adrien.tech.com/', // TODO: HTTPS
   },
 
   site: {
     protocol: 'http://',
-    secure: true,
+    secure: false,
     hostname: 'www.adrien.tech',
     port: '',
   },

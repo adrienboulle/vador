@@ -15,3 +15,12 @@ gulp.task('lint:scss', loadTask('lint', 'scssLint'));
 
 gulp.task('lint:all', gulp.parallel(['lint:ts', 'lint:js', 'lint:scss']));
 
+gulp.task('linker:styles', loadTask('linker', 'styles'));
+gulp.task('linker:js', loadTask('linker', 'js'));
+
+gulp.task('linker:all', gulp.series(['linker:styles', 'linker:js']));
+
+gulp.task('sass:min', loadTask('sass', 'min'));
+gulp.task('sass:dev', loadTask('sass', 'dev'));
+
+gulp.task('upload:production', loadTask('upload', 'production'));

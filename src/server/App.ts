@@ -33,7 +33,7 @@ export class App {
     this.routes();
     this.express.set('view engine', 'ejs');
     this.express.engine('.ejs', ejs.__express);
-    this.express.set('views', '.build/src/views');
+    this.express.set('views', '.build/private/src/views');
   }
 
   // Configure Express middleware.

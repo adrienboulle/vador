@@ -3,44 +3,52 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sassGlob = require('gulp-sass-glob');
-const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
+const replace = require('gulp-replace');
 const stripComments = require('gulp-strip-comments');
+const rename = require('gulp-rename');
 
-const cacheBuster = require('../../gulp/modules/cachbusting');
+const cacheBuster = require('../../tools/cacheBuster');
 
-const options = {
+const sharedOptions = {
   sass: {
     precision: 8,
-    outputStyle: 'compressed',
   },
   autoprefixer: {
     browsers: ['last 5 versions', '> 10%'],
   },
 };
 
-gulp.task('sass:local', () =>
-  gulp.src('src/styles/styles.scss')
-  .pipe(sourcemaps.init())
-  .pipe(sassGlob())
-  .pipe(sass(options.sass).on('error', sass.logError))
-  .pipe(autoprefixer(options.autoprefixer))
-  .pipe(stripComments.text())
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest('.build/public/styles/'))
-);
+const options = {
+  min: sharedOptions,
+  dev: sharedOptions,
+};
 
-gulp.task('sass:prod', () =>
-  gulp.src('src/styles/*.scss')
-  .pipe(sassGlob())
-  .pipe(sass(options.sass).on('error', sass.logError))
-  .pipe(autoprefixer(options.autoprefixer))
-  .pipe(stripComments.text())
-  .pipe(rename(path => {
-    path.basename = cacheBuster() + '.min' + path.basename.substring(6);
+options.min.sass.outputStyle = 'compressed';
 
-    return path;
-  }))
-  .pipe(gulp.dest('.build/public/styles'))
-);
+module.exports = {
+  dev: gulp => () =>
+    gulp.src('assets/styles/styles.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassGlob())
+    .pipe(sass(options.local).on('error', sass.logError))
+    .pipe(autoprefixer(options.autoprefixer))
+    .pipe(replace('[[cache]]', cacheBuster))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('.build/public/styles/')),
+
+  min: gulp => () =>
+    gulp.src('assets/styles/styles.scss')
+    .pipe(sassGlob())
+    .pipe(sass(options.prod).on('error', sass.logError))
+    .pipe(autoprefixer(options.autoprefixer))
+    .pipe(stripComments.text())
+    .pipe(replace('[[cache]]', cacheBuster))
+    .pipe(rename(path => {
+      path.basename = cacheBuster + path.basename.substring(4) + '.min';
+
+      return path;
+    }))
+    .pipe(gulp.dest('.build/public/styles/')),
+};

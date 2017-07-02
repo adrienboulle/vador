@@ -35,9 +35,10 @@ if [ "$wcdn" = "true" ]; then
 fi
 
 mkdir .build
-mkdir .build/src
+mkdir .build/private
+mkdir .build/private/src
 
-cp -r src/ .build/src/
+cp -r src/ .build/private/src/
 
 node_modules/.bin/ngc -p tsconfig.json
 node_modules/.bin/tsc -p tsconfig.json
@@ -47,6 +48,18 @@ node_modules/.bin/webpack --config webpack/webpack.server.config.js
 node_modules/.bin/webpack --config webpack/webpack.home.config.js
 node_modules/.bin/webpack --config webpack/webpack.contact.config.js
 
+mkdir .build/private/js
+
+mv .build/public/js/server-*.js .build/private/js/server-bundle.js
+
+gulp sass:min
+
+gulp linker:all
+
+if [ "$wcdn" = "true" ]; then
+  gulp upload:production
+fi
+
 if [ "$NODE_ENV" = "local" ]; then
-  node_modules/.bin/nodemon .build/public/server-bundle.js
+  node_modules/.bin/nodemon .build/private/js/server-bundle.js
 fi

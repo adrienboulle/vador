@@ -11,12 +11,12 @@
     "noImplicitAny": false,
     "sourceMap": false,
     "experimentalDecorators": true,
-    "outDir": ".build/src",
+    "outDir": ".build/private/src",
     "declaration": true,
     "typeRoots": ["node_modules/@types"]
   },
   "include": [
-    ".build/src/**/*.ts"
+    ".build/private/**/*.ts"
   ],
   "exclude": [
     "src",

@@ -2,7 +2,7 @@ const shared = require('./shared');
 
 module.exports = {
   entry: {
-    polyfills: './.build/src/client/polyfills.js',
+    polyfills: './.build/private/src/client/polyfills.js',
   },
   output: shared.output,
   module: {

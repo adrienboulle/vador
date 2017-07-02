@@ -3,7 +3,7 @@ const shared = require('./shared');
 module.exports = {
   target: 'node',
   entry: {
-    server: './.build/src/server/index.js',
+    server: './.build/private/src/server/index.js',
   },
   output: shared.output,
   module: {

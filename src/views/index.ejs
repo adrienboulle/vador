@@ -7,22 +7,8 @@
     <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
     <base href="<%= baseHref %>">
 
-    <!--SCRIPTS DEP-->
-    <!--SCRIPTS DEP END-->
-
-    <!--SCRIPTS APP HEAD-->
-    <!--SCRIPTS APP HEAD END-->
-
-    <!--STYLES APP-->
-    <!--STYLES APP END-->
-
-    <% if (!min) { %>
-      <script>
-        System.import('app').catch(function(err){ console.error(err); });
-      </script>
-    <% } else { %>
-      <script>window.module = 'aot';</script>
-    <% } %>
+    <!--STYLES-->
+    <!--STYLES END-->
 
   </head>
 
@@ -38,6 +24,9 @@
       three: '<%= CONF.env.cdn.one %>',
     };
   </script>
+
+  <!--SCRIPTS POLYFILLS-->
+  <!--SCRIPTS POLYFILLS END-->
 
   <% include ./partials/scripts %>
 

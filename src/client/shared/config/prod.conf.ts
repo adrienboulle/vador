@@ -2,8 +2,8 @@ import { AppConfig, getUrl } from './config';
 
 const APP_CONFIG: AppConfig = {
   ENV: 'PRODUCTION',
-  PROTOCOL: 'https://',
-  DOMAIN: 'www.adrienboulle.com',
+  PROTOCOL: 'http://',
+  DOMAIN: 'www.adrien.tech',
   PORT: '',
   URL: getUrl,
 };
