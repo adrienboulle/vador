@@ -20,4 +20,4 @@ RUN npm install --production
 
 EXPOSE 80
 
-CMD ["npm", "start", "--production"]
+CMD ["npm", "start"]
