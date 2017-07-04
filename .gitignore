@@ -2,7 +2,6 @@ node_modules
 
 .build
 .ebextensions
-src/server/config/env/production.js
 
 npm-debug.log
 .idea
