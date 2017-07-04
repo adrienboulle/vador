@@ -25,9 +25,9 @@ module.exports = {
   },
 
   S3: {
-    accessKeyId: keys[0],
+    accessKeyId: keys.accessKeyId,
     region: 'eu-west-1',
-    secretAccessKey: keys[1],
+    secretAccessKey: keys[1].secretAccessKey,
     sslEnabled: true,
     bucketName: 'elasticbeanstalk-eu-west-1-995892470641',
   },
