@@ -57,7 +57,7 @@ export namespace MetaHelper {
       },
       {
         type: 'canonical',
-        value: 'http://www.adrien.tech' + path, // TODO: HTTPS
+        value: 'https://www.adrien.tech' + path,
       },
     ];
   }

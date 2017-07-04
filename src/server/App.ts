@@ -9,7 +9,6 @@ import * as ejs from 'ejs';
 const expressLayouts = require('express-ejs-layouts');
 
 import { context } from './middlewares/context';
-import { https } from './middlewares/https';
 
 import { CusRequest } from './tools/CusRequest';
 
@@ -41,7 +40,6 @@ export class App {
     this.express.use(express.static('.build/public'));
     this.express.use(bodyParser.json());
     this.express.use(context);
-    this.express.use(https);
     this.express.use(expressLayouts);
   }
 
