@@ -34,7 +34,6 @@
     "ejs": "2.5.6",
     "express": "4.15.3",
     "express-ejs-layouts": "2.3.0",
-    "express-letsencrypt-simple": "^1.0.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "4.0.0",
     "gulp-clean": "0.3.2",

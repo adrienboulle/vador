@@ -7,9 +7,9 @@ import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
 
 const expressLayouts = require('express-ejs-layouts');
-const letsencrypt = require('express-letsencrypt-simple');
 
 import { context } from './middlewares/context';
+import { letsencrypt } from './middlewares/letsencrypt';
 
 import { CusRequest } from './tools/CusRequest';
 
@@ -38,7 +38,7 @@ export class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    this.express.use('/.well-known', letsencrypt);
+    this.express.use(letsencrypt);
     this.express.use(express.static('.build/public'));
     this.express.use(bodyParser.json());
     this.express.use(context);
