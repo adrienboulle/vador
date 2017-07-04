@@ -57,7 +57,7 @@ export namespace MetaHelper {
       },
       {
         type: 'canonical',
-        value: 'https://www.adrien.tech' + path,
+        value: 'https://www.adrien.tech' + req.cusContext.baseHref + path,
       },
     ];
   }
