@@ -11,10 +11,16 @@ module.exports = {
 
   port: 80,
 
+  // cdn: {
+  //   one: 'https://assets1.adrien.tech',
+  //   two: 'https://assets1.adrien.tech',
+  //   three: 'https://assets1.adrien.tech',
+  // },
+
   cdn: {
-    one: 'https://assets1.adrien.tech',
-    two: 'https://assets1.adrien.tech',
-    three: 'https://assets1.adrien.tech',
+    one: 'https://dh89v9bcbx864.cloudfront.net', // TODO use assets1
+    two: 'https://dh89v9bcbx864.cloudfront.net', // TODO use assets2
+    three: 'https://dh89v9bcbx864.cloudfront.net', // TODO use assets3
   },
 
   site: {
