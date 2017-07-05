@@ -36,7 +36,7 @@ module.exports = {
         {
           loader: 'ng-router-loader',
           options: {
-            aot: true,
+            aot: process.IS_AOT === 'true',
           },
         },
       ],

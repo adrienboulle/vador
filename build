@@ -2,25 +2,42 @@
 
 rm -rf .build
 
+gulp='node_modules/.bin/gulp'
+
 env=local
 wcdn=''
+is_min='false'
+is_aot='false'
+is_start='false'
 
-while getopts ue: opt
+while getopts ue:ams opt
 do
   case "$opt" in
     u) wcdn='true'
     ;;
     e) env=$OPTARG
     ;;
+    a) is_aot='true'
+    ;;
+    m) is_min='true'
+    ;;
+    s) is_start='true'
+    ;;
   esac
 done
 
 export NODE_ENV=$env
+export IS_AOT=$is_aot
+export IS_MIN=$is_min
 
-if [ "$wcdn" = "true" ]; then
+if [ "$NODE_ENV" = 'local' ]; then
+  inlineSourceMap='--inlineSourceMap'
+fi
+
+if [ "$wcdn" = 'true' ]; then
   while true; do
-    read -p "Do you really want to upload assets to CDN? (y/n) " yn
-    case $yn in
+    read -p 'Do you really want to upload assets to CDN? (y/n) ' yn
+    case "$yn" in
       [Yy]*)
         break
         ;;
@@ -28,7 +45,7 @@ if [ "$wcdn" = "true" ]; then
         exit
         ;;
       *)
-        echo "Please answer yes or no."
+        echo 'Please answer yes or no.'
         ;;
     esac
   done
@@ -36,30 +53,48 @@ fi
 
 mkdir .build
 mkdir .build/private
+mkdir .build/public
 mkdir .build/private/src
 
 cp -r src/ .build/private/src/
 
-node_modules/.bin/ngc -p tsconfig.json
-node_modules/.bin/tsc -p tsconfig.json
+$gulp keep:all
 
-node_modules/.bin/webpack --config webpack/webpack.polyfills.config.js
-node_modules/.bin/webpack --config webpack/webpack.server.config.js
-node_modules/.bin/webpack --config webpack/webpack.home.config.js
-node_modules/.bin/webpack --config webpack/webpack.contact.config.js
-
-mkdir .build/private/js
-
-mv .build/public/js/server-*.js .build/private/js/server-bundle.js
-
-gulp sass:min
-
-gulp linker:all
-
-if [ "$wcdn" = "true" ]; then
-  gulp upload:production
+if [ "$is_aot" = 'true' ]; then
+  node_modules/.bin/ngc -p tsconfig.json ${inlineSourceMap}
 fi
 
-if [ "$NODE_ENV" = "local" ]; then
-  node_modules/.bin/nodemon .build/private/js/server-bundle.js
+if [ "$is_min" = 'true' ]; then
+  node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap}
+  node_modules/.bin/webpack --config webpack/webpack.polyfills.config.js
+  node_modules/.bin/webpack --config webpack/webpack.server.config.js
+  node_modules/.bin/webpack --config webpack/webpack.home.config.js
+  node_modules/.bin/webpack --config webpack/webpack.contact.config.js
+
+  mkdir .build/private/js
+  cp .build/public/js/server-*.js .build/private/js/server-bundle.js
+else
+  mkdir .build/public/js
+  mkdir .build/public/src
+  cp -r .build/private/src .build/public/
+  cp src/systemjs.config.app.js .build/public/js/
+  cd .build/public/js/
+  ln -s ../../../node_modules node_modules
+  cd ../../..
+  node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap} -m commonjs
+fi
+
+$gulp sass:min
+$gulp linker:all
+
+if [ "$wcdn" = 'true' ]; then
+  $gulp upload:production
+fi
+
+if [ "$is_start" = 'true' ]; then
+  if [ "$is_min" = 'true' ]; then
+    node_modules/.bin/nodemon .build/private/js/server-bundle.js
+  else
+    node_modules/.bin/nodemon .build/private/src/server/index.js
+  fi
 fi

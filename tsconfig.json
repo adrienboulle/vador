@@ -19,7 +19,6 @@
     ".build/private/**/*.ts"
   ],
   "exclude": [
-    "src",
-    "node_modules"
+    "src"
   ]
 }

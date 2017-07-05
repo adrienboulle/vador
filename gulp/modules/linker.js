@@ -47,6 +47,15 @@ const linkJs = gulp =>
     fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
     appRoot: '.build/public/',
   }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/js/systemjs.config.app.js',
+    ],
+    startTag: '<!--SCRIPTS SYSTEMJS APP-->',
+    endTag: '<!--SCRIPTS SYSTEMJS APP-->',
+    fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
   .pipe(gulp.dest('.build/private/src/views'));
 
 const linkStyles = gulp =>

@@ -4,7 +4,7 @@
     <title>Ahead of time compilation</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="<%= CONF.env.cdn.getCdn() %> + imgs/favicon.ico">
     <base href="<%= baseHref %>">
 
     <!--STYLES-->
@@ -22,12 +22,19 @@
       one: '<%= CONF.env.cdn.one %>',
       two: '<%= CONF.env.cdn.one %>',
       three: '<%= CONF.env.cdn.one %>',
+      _index: <%= CONF.env.cdn._index %>,
+      getCdn: <%= CONF.env.cdn.getCdn.toString() %>
     };
   </script>
 
   <!--SCRIPTS POLYFILLS-->
   <!--SCRIPTS POLYFILLS END-->
 
-  <% include ./partials/scripts %>
-
+  <!--KEEP-START-IS_MIN:true-->
+  <% include ./partials/scripts-min %>
+  <!--KEEP-END-->
+  <!--KEEP-START-IS_MIN:false-->
+  <!--SCRIPTS SYSTEMJS APP-->
+  <!--SCRIPTS SYSTEMJS APP END-->
+  <!--KEEP-END-->
 </html>

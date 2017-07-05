@@ -14,9 +14,6 @@ export namespace Window {
       protocol: conf.env.site.protocol,
       frontHostname: conf.env.site.hostname,
     };
-    global.window.cdn = {};
-    global.window.cdn.one = conf.env.cdn.one;
-    global.window.cdn.two = conf.env.cdn.two;
-    global.window.cdn.three = conf.env.cdn.three;
+    global.window.cdn = conf.env.cdn;
   }
 }

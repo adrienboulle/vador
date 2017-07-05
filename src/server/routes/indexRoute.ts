@@ -2,7 +2,7 @@
 
 import { Router, Response, NextFunction } from 'express';
 
-// NGFACTORY-START-ISAOT:true
+// NGFACTORY-START-IS_AOT:true
 import { renderModuleFactory } from '@angular/platform-server';
 // NGFACTORY-END
 
@@ -46,14 +46,15 @@ export class IndexRouter {
     res.render('index', {
       req,
       layout: false,
-      min: true,
       baseHref: req.cusContext.baseHref,
     }, (err, html) => {
       if (err) {
         return next(err);
       }
 
-      // NGFACTORY-START-ISAOT:true
+      html = html.replace(/&#39;/g, '\'');
+
+      // NGFACTORY-START-IS_AOT:true
       renderModuleFactory(require('../../client/app/app.server.module.ngfactory').AppServerModuleNgFactory, {
         document: html,
         url: req.url,

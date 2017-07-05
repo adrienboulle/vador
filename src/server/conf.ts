@@ -26,6 +26,12 @@ const config: any = () => {
   }
 
   config.env.verbose = verbose === 'true';
+  config.env.cdn._index = -1;
+  config.env.cdn.getCdn = function () {
+    return this[Object.keys(this).filter(function (key) {
+      return typeof key === 'string';
+    })[this._index++ % 3]];
+  };
 
   console.log('Configuration file ' + config.env.name + '.js' + ' loaded');
 

@@ -11,18 +11,23 @@ export const pagesData: any = {
     title: 'meta_title_home',
     description: 'meta_description_home',
   },
-  '/contact': {
+  '/contact/': {
     title: 'meta_title_contact',
     description: 'meta_description_contact',
   },
 };
 
 export namespace MetaHelper {
-  export function getPageData(url: any): any {
+  export function getPageData(url: string): any {
     let path = url.split('?')[0];
 
-    if (path[0] !== '/') {
+    if (path.indexOf('/') !== 0) {
       path = '/' + path;
+    }
+
+    // Just a fallback, should not happen
+    if (!path.endsWith('/')) {
+      path = path + '/';
     }
 
     return pagesData[path];
