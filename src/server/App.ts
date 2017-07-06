@@ -9,7 +9,6 @@ import * as ejs from 'ejs';
 const expressLayouts = require('express-ejs-layouts');
 
 import { context } from './middlewares/context';
-import { redirects } from './middlewares/redirects';
 
 import { CusRequest } from './tools/CusRequest';
 
@@ -39,7 +38,6 @@ export class App {
   // Configure Express middleware.
   private middleware(): void {
     this.express.use(express.static('.build/public'));
-    this.express.use(redirects);
     this.express.use(context);
     this.express.use(bodyParser.json());
     this.express.use(expressLayouts);
@@ -48,7 +46,7 @@ export class App {
   // Configure API endpoints.
   private routes(): void {
     for (let route of routes) {
-      this.express.use('/:lang/', route.router);
+      this.express.use('/:lang', route.router);
       this.express.use('/', route.router);
     }
 

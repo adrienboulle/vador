@@ -49,10 +49,14 @@ const linkJs = gulp =>
   }))
   .pipe(linker({
     scripts: [
+      '.build/public/js/node_modules/systemjs/dist/system.src.js',
+      '.build/public/js/node_modules/core-js/client/core.min.js',
+      '.build/public/js/node_modules/reflect-metadata/Reflect.js',
+      '.build/public/js/node_modules/zone.js/dist/zone.min.js',
       '.build/public/js/systemjs.config.app.js',
     ],
     startTag: '<!--SCRIPTS SYSTEMJS APP-->',
-    endTag: '<!--SCRIPTS SYSTEMJS APP-->',
+    endTag: '<!--SCRIPTS SYSTEMJS APP END-->',
     fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
     appRoot: '.build/public/',
   }))

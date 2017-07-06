@@ -59,6 +59,7 @@ mkdir .build/private/src
 cp -r src/ .build/private/src/
 
 $gulp keep:all
+$gulp inline:all
 
 if [ "$is_aot" = 'true' ]; then
   node_modules/.bin/ngc -p tsconfig.json ${inlineSourceMap}
@@ -76,12 +77,12 @@ if [ "$is_min" = 'true' ]; then
 else
   mkdir .build/public/js
   mkdir .build/public/src
-  cp -r .build/private/src .build/public/
   cp src/systemjs.config.app.js .build/public/js/
   cd .build/public/js/
   ln -s ../../../node_modules node_modules
   cd ../../..
   node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap} -m commonjs
+  cp -r .build/private/src .build/public/
 fi
 
 $gulp sass:min

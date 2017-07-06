@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 
@@ -22,7 +22,6 @@ export const ROUTES: Route[] = [
 
 // KEEP-START-IS_MIN:false
 // NGFACTORY-START-IS_AOT:true
-import { LoadChildrenCallback } from '@angular/router';
 import { ContactModuleNgFactory } from './contact/contact.module.ngfactory';
 import { HomeModuleNgFactory } from './home/home.module.ngfactory';
 
@@ -31,7 +30,7 @@ export function getChildrenContact(): any {
 }
 
 export function  getChildrenHome(): any {
-  return Promise.resolve(ContactModuleNgFactory);
+  return Promise.resolve(HomeModuleNgFactory);
 }
 
 export const ROUTES: Route[] = [

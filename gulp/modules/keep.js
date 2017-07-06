@@ -45,19 +45,19 @@ module.exports = {
                 const key = keyVal[0];
                 const values = keyVal[1].split('|');
 
-                if (values.indexOf(process.env[key]) === -1) {
+                if (type === 'KEEP' && values.indexOf(process.env[key]) === -1) {
                   filter = true;
+                } else if (values.indexOf(process.env[key]) !== -1) {
+                  type = undefined;
                 }
               }
 
               let newLine = line;
 
-              if (type) {
-                switch (type) {
-                  case 'NGFACTORY':
-                    newLine = line.replace(/(NgFactory|\.ngfactory)/g, '').replace('renderModuleFactory', 'renderModule');
-                    break;
-                }
+              switch (type) {
+                case 'NGFACTORY':
+                  newLine = line.replace(/(NgFactory|\.ngfactory)/g, '').replace('renderModuleFactory', 'renderModule');
+                  break;
               }
 
               if (filter === false) {

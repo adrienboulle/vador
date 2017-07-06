@@ -9,12 +9,7 @@ import { renderModuleFactory } from '@angular/platform-server';
 import { CusRequest } from '../tools/CusRequest';
 import { Window } from '../tools/Window';
 import { MetaHelper } from '../tools/MetaHelper';
-
-export const otherLangs: string[] = [
-  'en',
-];
-
-export const defaultLang: string = 'fr';
+import { langHandler } from '../tools/langHandler';
 
 declare let global: any;
 
@@ -29,16 +24,8 @@ export class IndexRouter {
   }
 
   public index(req: CusRequest, res: Response, next: NextFunction) {
-    const lang = req.params.lang || defaultLang;
-
-    if (req.params.lang && otherLangs.indexOf(req.params.lang) === -1) {
-      return next();
-    }
-
-    req.cusContext.lang = lang;
-
-    if (otherLangs.indexOf(lang) !== -1) {
-      req.cusContext.baseHref = '/' + lang + '/';
+    if (langHandler(req, res, next)) {
+      return;
     }
 
     Window.init(global, MetaHelper.getMeta(req));

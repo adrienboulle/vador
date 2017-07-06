@@ -1,2 +1,10 @@
-<!--SCRIPTS SYSTEMJS APP-->
-<!--SCRIPTS SYSTEMJS APP END-->
+<% switch (req.url) {
+  case '/': %>
+    <!--SCRIPTS HOME-->
+    <!--SCRIPTS HOME END-->
+<%
+    break;
+  case '/contact': %>
+    <!--SCRIPTS CONTACT-->
+    <!--SCRIPTS CONTACT END-->
+<% } %>

@@ -26,3 +26,8 @@ gulp.task('sass:dev', loadTask('sass', 'dev'));
 gulp.task('upload:production', loadTask('upload', 'production'));
 
 gulp.task('keep:all', loadTask('keep', 'all'));
+
+gulp.task('inline:templates', loadTask('inline', 'templates'));
+gulp.task('inline:styles', loadTask('inline', 'styles'));
+
+gulp.task('inline:all', gulp.series(['inline:styles', 'inline:templates']));
