@@ -1,0 +1,36 @@
+#!/bin/bash
+gulp='node_modules/.bin/gulp'
+
+cp -r src/ .build/private/src/
+
+$gulp keep:all
+$gulp inline:all
+
+if [ "$is_aot" = 'true' ]; then
+  node_modules/.bin/ngc -p tsconfig.json ${inlineSourceMap}
+fi
+
+echo $is_min
+
+if [ "$is_min" = 'true' ]; then
+  $gulp sass:min
+  node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap}
+  node_modules/.bin/webpack --config webpack/webpack.polyfills.config.js
+  node_modules/.bin/webpack --config webpack/webpack.server.config.js
+  node_modules/.bin/webpack --config webpack/webpack.home.config.js
+  node_modules/.bin/webpack --config webpack/webpack.contact.config.js
+
+  mkdir .build/private/js
+  cp .build/public/js/server-*.js .build/private/js/server-bundle.js
+else
+  mkdir .build/public/js
+  mkdir .build/public/src
+  cp src/systemjs.config.app.js .build/public/js/
+  cd .build/public/js/
+  ln -s ../../../node_modules node_modules
+  cd ../../..
+  node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap} -m commonjs
+  cp -r .build/private/src .build/public/
+fi
+
+$gulp linker:all

@@ -31,3 +31,7 @@ gulp.task('inline:templates', loadTask('inline', 'templates'));
 gulp.task('inline:styles', loadTask('inline', 'styles'));
 
 gulp.task('inline:all', gulp.series(['inline:styles', 'inline:templates']));
+
+gulp.task('serve:local', loadTask('serve', 'local'));
+
+gulp.task('scripts:ts', loadTask('scripts', 'ts'));
