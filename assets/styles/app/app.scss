@@ -1,4 +1,7 @@
 app {
   z-index: $zIndexApp;
-  background-color: $red;
+
+  .content {
+    padding-top: $navHeight;
+  }
 }

@@ -8,12 +8,20 @@ import { TradsHelper } from '../../client/shared/tools/TradsHelper';
 
 export const pagesData: any = {
   '/': {
-    title: 'meta_title_home',
-    description: 'meta_description_home',
+    title: 'home_meta_title',
+    description: 'home_meta_description',
   },
-  '/contact/': {
-    title: 'meta_title_contact',
-    description: 'meta_description_contact',
+  '/contact': {
+    title: 'contact_meta_title',
+    description: 'contact_meta_description',
+  },
+  '/skills': {
+    title: 'skills_meta_title',
+    description: 'skills_meta_description',
+  },
+  '/competences': {
+    title: 'skills_meta_title',
+    description: 'skills_meta_description',
   },
 };
 
@@ -23,11 +31,6 @@ export namespace MetaHelper {
 
     if (path.indexOf('/') !== 0) {
       path = '/' + path;
-    }
-
-    // Just a fallback, should not happen
-    if (!path.endsWith('/')) {
-      path = path + '/';
     }
 
     return pagesData[path];
@@ -43,6 +46,10 @@ export namespace MetaHelper {
       {
         type: 'charset',
         value: 'UTF-8',
+      },
+      {
+        type: 'lang',
+        value: trads.html_lang,
       },
       {
         type: 'robots',

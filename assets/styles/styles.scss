@@ -5,5 +5,16 @@
 
 @import 'app/variables';
 
-@import 'app/app';
+@import 'helpers/**/*';
+@import 'app/*';
 
+body {
+  font-family: "Proxima", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.42857143;
+  background-color: $b1;
+  color: #313E51;
+  margin: 0;
+  padding: 0;
+}

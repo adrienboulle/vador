@@ -49,6 +49,15 @@ const linkJs = gulp =>
   }))
   .pipe(linker({
     scripts: [
+      '.build/public/js/skills-*.js',
+    ],
+    startTag: '<!--SCRIPTS SKILLS-->',
+    endTag: '<!--SCRIPTS SKILLS END-->',
+    fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(linker({
+    scripts: [
       '.build/public/js/node_modules/systemjs/dist/system.src.js',
       '.build/public/js/node_modules/core-js/client/core.min.js',
       '.build/public/js/node_modules/reflect-metadata/Reflect.js',

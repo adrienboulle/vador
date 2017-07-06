@@ -4,6 +4,13 @@ import { PlatformState } from '@angular/platform-server';
 import { RendererTools } from '../tools/RendererTools';
 
 export const metaDescriptions = {
+  lang: {
+    tagName: 'html',
+    dataType: 'attributes',
+    attributes: {
+      lang: 'value',
+    },
+  },
   description: {
     tagName: 'meta',
     dataType: 'attributes',
@@ -96,7 +103,18 @@ export class MetaService {
     for (let meta of metaDef) {
       const metaTagDescription = metaDescriptions[meta.type];
       const metaTagName = metaTagDescription.tagName;
-      const metaTag = this._getMeta(headNode, metaTagName, meta.value, metaTagDescription);
+      let fromNode;
+
+      switch (metaTagDescription.tagName) {
+        case 'html':
+          fromNode = document;
+          break;
+        default:
+          fromNode = headNode;
+          break;
+      }
+
+      const metaTag = this._getMeta(fromNode, metaTagName, meta.value, metaTagDescription);
 
       switch (metaTagDescription.dataType) {
         case 'attributes':

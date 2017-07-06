@@ -19,7 +19,7 @@ export class IndexRouter {
 
   constructor() {
     this.router = Router({ mergeParams: true });
-    this.routes = ['/contact', '/'];
+    this.routes = ['/contact', '/skills', '/competences', '/'];
     this._init();
   }
 

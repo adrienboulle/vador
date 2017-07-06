@@ -16,25 +16,34 @@ enableProdMode();
 // KEEP-START-IS_MIN:true
 export const ROUTES: Route[] = [
   { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
+  { path: 'skills', loadChildren: './skills/skills.module#SkillsModule' },
+  { path: 'competences', loadChildren: './skills/skills.module#SkillsModule' },
   { path: '', loadChildren: './home/home.module#HomeModule' },
 ];
 // KEEP-END
 
 // KEEP-START-IS_MIN:false
 // NGFACTORY-START-IS_AOT:true
-import { ContactModuleNgFactory } from './contact/contact.module.ngfactory';
 import { HomeModuleNgFactory } from './home/home.module.ngfactory';
-
-export function getChildrenContact(): any {
-  return Promise.resolve(ContactModuleNgFactory);
-}
+import { SkillsModuleNgFactory } from './skills/skills.module.ngfactory';
+import { ContactModuleNgFactory } from './contact/contact.module.ngfactory';
 
 export function  getChildrenHome(): any {
   return Promise.resolve(HomeModuleNgFactory);
 }
 
+export function  getChildrenSkills(): any {
+  return Promise.resolve(SkillsModuleNgFactory);
+}
+
+export function getChildrenContact(): any {
+  return Promise.resolve(ContactModuleNgFactory);
+}
+
 export const ROUTES: Route[] = [
   { path: 'contact', loadChildren: getChildrenContact },
+  { path: 'skills', loadChildren: getChildrenSkills },
+  { path: 'competences', loadChildren: getChildrenSkills },
   { path: '', loadChildren: getChildrenHome },
 ];
 // KEEP-END
