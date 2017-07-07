@@ -1,5 +1,8 @@
 <header>
   <nav>
+    <a class="logo" [routerLink]="[('home_nav_link' | i18n)]">
+      <img src="http://img09.deviantart.net/be5d/i/2014/106/6/c/random_logo_by_criticl-d7eqdvw.png">
+    </a>
     <div class="links-container">
       <a [routerLink]="[('home_nav_link' | i18n)]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
         <div>
