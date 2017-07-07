@@ -20,4 +20,27 @@ export namespace RendererTools {
       return el.attribs[attribute];
     }
   }
+
+  export function hasClass(el: any, className: string): boolean {
+    if (!window.isSsr) {
+      return el.classList.contains(className);
+    }
+
+    return classList(el).indexOf(className) > -1;
+  }
+
+  export function classList(el: any): string[] {
+    if (!window.isSsr) {
+      throw new Error('Use el.classList');
+    }
+
+    let classAttrValue: any = null;
+    const attributes = el.attribs;
+
+    if (attributes && attributes.class) {
+      classAttrValue = attributes.class;
+    }
+
+    return classAttrValue ? classAttrValue.trim().split(/\s+/g) : [];
+  }
 }

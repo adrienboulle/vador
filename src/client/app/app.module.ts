@@ -1,4 +1,4 @@
-import { NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { I18nService } from '../shared/services/i18n.service';
 
 import { AppComponent } from './app.component';
+import { Link, NavBarComponent } from './nav-bar/nav-bar.component';
 
 // KEEP-START-NODE_ENV:production
 import {enableProdMode} from '@angular/core';
@@ -63,6 +64,8 @@ export const ROUTES: Route[] = [
   ],
   declarations: [
     AppComponent,
+    NavBarComponent,
+    Link,
   ],
 })
 export class AppModule {}

@@ -1,6 +1,16 @@
 app {
   z-index: $zIndexApp;
 
+  header {
+    background-color: $r1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $navHeight;
+    box-shadow: $navBoxShadow;
+  }
+
   .content {
     padding-top: $navHeight;
   }
