@@ -14,11 +14,14 @@ $lightGrey: rgba(0, 0, 0, 0.5);
 $XlightGrey: rgba(0, 0, 0, 0.1);
 $lightBlue: rgba(26, 37, 62, 0.05);
 
-$headerHeight: 5em;
+$headerHeight: 6em;
 $headerHeightScrolled: 3em;
 $headerBoxShadow: 0px -2px 7px 4px $lightGrey;
+$speedHeaderTransition: 0.3s;
+$headerTransition: ease-in-out $speedHeaderTransition;
+
 $speedLinkOverayApear: 0.25s;
-$speedSocialPulse: 0.3s;
+$speedSocialPulse: $speedHeaderTransition;
 
 $footerBoxShadow: inset 0 4px 2px -2px $XlightGrey;
 $footerColor: $lightBlue;

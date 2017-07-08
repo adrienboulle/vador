@@ -1,3 +1,14 @@
+app {
+  &.scrolled {
+    .socials-container {
+      a {
+        height: 50%;
+        padding: 0 0.8em;
+      }
+    }
+  }
+}
+
 nav-bar {
   @include flex(center, center);
   height: 100%;
@@ -55,7 +66,6 @@ nav-bar {
   .socials-container {
     @include flex(center, center);
     height: 100%;
-    padding-right: 3em;
 
     a {
       height: 38%;

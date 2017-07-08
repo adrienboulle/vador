@@ -4,6 +4,19 @@ app {
   padding-bottom: $footerHeight;
   position: relative;
   z-index: $zIndexApp;
+  transition: min-height $headerTransition;
+
+  &.scrolled {
+    min-height: calc(100vh - #{$footerHeight} - #{$headerHeightScrolled});
+
+    header {
+      height: $headerHeightScrolled;
+    }
+
+    .content {
+      margin-top: $headerHeightScrolled;
+    }
+  }
 
   nav-bar,
   .content,
@@ -21,11 +34,15 @@ app {
     left: 0;
     height: $headerHeight;
     box-shadow: $headerBoxShadow;
+
+    transition: height $headerTransition;
   }
 
   .content {
     margin-top: $headerHeight;
-    // height: 60em;
+    height: 60em;
+
+    transition: margin-top $headerTransition;
   }
 
   footer {
