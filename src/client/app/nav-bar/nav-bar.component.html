@@ -1,0 +1,29 @@
+<a class="logo" [routerLink]="[('home_nav_link' | i18n)]">
+  <img src="http://img09.deviantart.net/be5d/i/2014/106/6/c/random_logo_by_criticl-d7eqdvw.png">
+</a>
+<div class="links-container" #linksContainer>
+  <span #linkOverlay class="link-overlay"></span>
+  <a link [routerLink]="[('home_nav_link' | i18n)]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <div>
+      {{'home_nav' | i18n}}
+    </div>
+  </a>
+  <a link [routerLink]="[('contact_nav_link' | i18n)]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <div>
+      {{'contact_nav' | i18n}}
+    </div>
+  </a>
+  <a link [routerLink]="[('skills_nav_link' | i18n)]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <div>
+      {{'skills_nav' | i18n}}
+    </div>
+  </a>
+</div>
+<div class="socials-container">
+  <a href="https://fr.linkedin.com/in/adrien-boull%C3%A9-9a543b83">
+    <img src="/imgs/linkedin-icon.svg">
+  </a>
+  <a href="https://github.com/adrienboulle">
+    <img src="/imgs/github-icon.svg">
+  </a>
+</div>
