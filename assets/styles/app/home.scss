@@ -1,0 +1,16 @@
+.headline {
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+.pres {
+  @include flex(center, center);
+
+  .logo {
+    margin: 1.5em 1.5em 0 0;
+
+    img {
+      display: block;
+    }
+  }
+}
