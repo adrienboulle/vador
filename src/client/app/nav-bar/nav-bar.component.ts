@@ -60,6 +60,8 @@ export class NavBarComponent implements OnInit {
 
       if (classToAdd) {
         this._renderer.addClass(this.linkOverlay.nativeElement, classToAdd);
+      } else {
+        this._unSlide();
       }
     });
     this._renderer.listen(this.linksContainer.nativeElement, 'mouseleave', () => this._unSlide());

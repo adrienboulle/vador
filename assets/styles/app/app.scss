@@ -1,8 +1,13 @@
 app {
+  display: block;
+  min-height: calc(100vh - #{$footerHeight} - #{$headerHeight});
+  padding-bottom: $footerHeight;
+  position: relative;
   z-index: $zIndexApp;
 
   nav-bar,
-  .content {
+  .content,
+  footer-bar {
     max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
@@ -14,11 +19,21 @@ app {
     top: 0;
     right: 0;
     left: 0;
-    height: $navHeight;
-    box-shadow: $navBoxShadow;
+    height: $headerHeight;
+    box-shadow: $headerBoxShadow;
   }
 
   .content {
-    padding-top: $navHeight;
+    margin-top: $headerHeight;
+    // height: 60em;
+  }
+
+  footer {
+    background-color: $footerColor;
+    box-shadow: $footerBoxShadow;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
   }
 }

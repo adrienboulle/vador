@@ -48,7 +48,7 @@ nav-bar {
 
     a {
       z-index: $zIndexLink;
-      padding: 0 2em;
+      padding: 0 1.5em;
     }
   }
 
@@ -58,14 +58,14 @@ nav-bar {
     padding-right: 3em;
 
     a {
-      height: 40%;
-      opacity: 0.75;
+      height: 38%;
+      opacity: 0.7;
       padding: 0 1em;
       transition: all ease-in-out $speedSocialPulse;
 
       &:hover {
         opacity: 1;
-        transform: scale(1.04);
+        transform: scale(1.06);
       }
     }
 
