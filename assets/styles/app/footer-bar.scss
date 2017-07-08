@@ -1,0 +1,4 @@
+footer-bar {
+  @include flex(center, center);
+  height: $footerHeight;
+}
