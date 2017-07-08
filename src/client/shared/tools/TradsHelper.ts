@@ -14,8 +14,36 @@ const RAW_TRADS = {
     en: 'I\'m available for your web projets, from conception to production.',
   },
   home_h1: {
+    fr: 'Je réalise vos projet !',
+    en: 'I make your projects a reality!',
+  },
+  home_h2_prop: {
     fr: 'Vous cherchez un développeur polyvalent ?',
     en: 'You need a fullstack developer ?',
+  },
+  home_p_prop: {
+    fr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    en: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+  },
+  home_h2_price: {
+    fr: 'Mon tarif',
+    en: 'Price',
+  },
+  home_p_price_1: {
+    fr: 'A ce jour j\'ai un status d\'auto-entrepreneur.',
+    en: 'My status allow me not to charge VAT.',
+  },
+  home_p_price_2: {
+    fr: 'Mon tarif est de 350€ par jour',
+    en: 'I charge 350€ a day',
+  },
+  home_h2_project: {
+    fr: 'Vos projets',
+    en: 'Your project',
+  },
+  home_p_project: {
+    fr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    en: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
   },
   home_nav: {
     fr: 'Accueil',

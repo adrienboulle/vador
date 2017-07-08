@@ -23,6 +23,14 @@ nav-bar {
     }
   }
 
+  a {
+    &.active {
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
   .links-container {
     @include flex();
     height: 100%;
@@ -37,7 +45,7 @@ nav-bar {
       z-index: $zIndexLinkOverlay;
 
       &.in {
-        opacity: 1;
+        opacity: 0.75;
       }
 
       &.slide-right {

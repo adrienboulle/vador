@@ -27,7 +27,7 @@ app {
   }
 
   header {
-    background-color: $r1;
+    background-color: $b2;
     position: fixed;
     top: 0;
     right: 0;
@@ -40,8 +40,6 @@ app {
 
   .content {
     margin-top: $headerHeight;
-    height: 60em;
-
     transition: margin-top $headerTransition;
   }
 
