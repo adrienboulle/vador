@@ -1,6 +1,13 @@
 app {
   z-index: $zIndexApp;
 
+  nav-bar,
+  .content {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   header {
     background-color: $r1;
     position: fixed;

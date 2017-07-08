@@ -58,6 +58,8 @@ mkdir .build/private
 mkdir .build/public
 mkdir .build/private/src
 
+cp -r assets/imgs .build/public/imgs
+
 if [ "$is_min" = 'true' ]; then
   $gulp sass:min
 else
