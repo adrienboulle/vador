@@ -26,7 +26,7 @@ const RAW_TRADS = {
     en: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
   },
   home_h2_price: {
-    fr: 'Mon tarif',
+    fr: 'Tarif',
     en: 'Price',
   },
   home_p_price_1: {

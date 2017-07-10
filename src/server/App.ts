@@ -5,6 +5,7 @@ import { Application, Router, Response } from 'express';
 
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
+import * as minifyHTML from 'express-minify-html';
 
 const expressLayouts = require('express-ejs-layouts');
 
@@ -41,6 +42,18 @@ export class App {
     this.express.use(context);
     this.express.use(bodyParser.json());
     this.express.use(expressLayouts);
+    this.express.use(minifyHTML({
+      override: true,
+      exception_url: false,
+      htmlMinifier: {
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: true,
+        removeEmptyAttributes: true,
+        minifyJS: true,
+      },
+    }));
   }
 
   // Configure API endpoints.

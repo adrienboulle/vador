@@ -6,6 +6,10 @@ cp -r src/ .build/private/src/
 $gulp keep:all
 $gulp inline:all
 
+if [ "$NODE_ENV" = 'local' ]; then
+  inlineSourceMap='--inlineSourceMap'
+fi
+
 if [ "$is_aot" = 'true' ]; then
   node_modules/.bin/ngc -p tsconfig.json ${inlineSourceMap}
 fi

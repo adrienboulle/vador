@@ -1,9 +1,16 @@
 app {
-  &.scrolled {
+  &.a {
     .socials-container {
       a {
-        height: 50%;
-        padding: 0 0.8em;
+        //height: 48%;
+      }
+    }
+  }
+
+  &.b {
+    .socials-container {
+      a {
+        //height: 47.99%;
       }
     }
   }
@@ -13,13 +20,15 @@ nav-bar {
   @include flex(center, center);
   height: 100%;
 
-  .logo {
-    width: 10em;
-    text-align: center;
-    height: 80%;
+  a {
+    &.logo {
+      width: 10em;
+      text-align: center;
+      height: 80%;
 
-    img {
-      height: 100%;
+      img {
+        height: 100%;
+      }
     }
   }
 
@@ -34,6 +43,7 @@ nav-bar {
   .links-container {
     @include flex();
     height: 100%;
+    position: relative;
 
     .link-overlay {
       position: absolute;
@@ -62,12 +72,27 @@ nav-bar {
       @include flex(center, center);
       height: 100%;
       color: $white;
-      text-decoration: none;
     }
 
     a {
       z-index: $zIndexLink;
       padding: 0 1.5em;
+
+      &.logo {
+        width: 10em;
+        text-align: center;
+        height: 80%;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      &.active {
+        &:hover {
+          cursor: default;
+        }
+      }
     }
   }
 
@@ -76,19 +101,28 @@ nav-bar {
     height: 100%;
 
     a {
-      height: 38%;
+      height: 100%;
       opacity: 0.7;
       padding: 0 1em;
-      transition: all ease-in-out $speedSocialPulse;
 
       &:hover {
-        opacity: 1;
-        transform: scale(1.06);
+        div {
+          img {
+            opacity: 1;
+            transform: scale(1.06);
+          }
+        }
       }
-    }
 
-    img {
-      height: 100%;
+      div {
+        @include flex(center, center);
+        height: 100%;
+
+        img {
+          height: 1.8em;
+          transition: all ease-in-out $speedSocialPulse;
+        }
+      }
     }
   }
 

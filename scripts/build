@@ -32,10 +32,6 @@ export NODE_ENV=$env
 export IS_AOT=$is_aot
 export IS_MIN=$is_min
 
-if [ "$NODE_ENV" = 'local' ]; then
-  inlineSourceMap='--inlineSourceMap'
-fi
-
 if [ "$wcdn" = 'true' ]; then
   while true; do
     read -p 'Do you really want to upload assets to CDN? (y/n) ' yn

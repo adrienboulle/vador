@@ -3,8 +3,8 @@ app {
   min-height: calc(100vh - #{$footerHeight} - #{$headerHeight});
   padding-bottom: $footerHeight;
   position: relative;
-  z-index: $zIndexApp;
   transition: min-height $headerTransition;
+  z-index: $zIndexApp;
 
   &.scrolled {
     min-height: calc(100vh - #{$footerHeight} - #{$headerHeightScrolled});
@@ -34,8 +34,12 @@ app {
     left: 0;
     height: $headerHeight;
     box-shadow: $headerBoxShadow;
+    max-height: $headerHeight;
+    min-height: $headerHeightScrolled;
 
-    transition: height $headerTransition;
+    &.smooth-height {
+      transition: height $headerTransition;
+    }
   }
 
   .content {
@@ -50,5 +54,6 @@ app {
     right: 0;
     left: 0;
     bottom: 0;
+    z-index: $zIndexFooter;
   }
 }

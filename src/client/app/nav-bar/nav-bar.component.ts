@@ -7,6 +7,8 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
 import { RendererTools } from '../../shared/tools/RendererTools';
 
+declare let window: any;
+
 @Directive({
   selector: '[link]',
 })
@@ -19,31 +21,40 @@ export class Link {
   templateUrl: 'nav-bar.component.html',
 })
 export class NavBarComponent implements OnInit {
-  @ViewChild('linkOverlay') public linkOverlay: ElementRef;
-  @ViewChild('linksContainer') public linksContainer: ElementRef;
-  @ViewChildren(Link) public activeLinks: QueryList<Link>;
+  @ViewChild('linkOverlay')
+  private _linkOverlay: ElementRef;
+
+  @ViewChild('linksContainer')
+  private _linksContainer: ElementRef;
+
+  @ViewChildren(Link)
+  private _activeLinks: QueryList<Link>;
 
   private _activeLink: ElementRef;
 
   constructor(private _renderer: Renderer2, router: Router) {
+    if (window.isSsr) {
+      return;
+    }
+
     router.events
     .filter(event => event instanceof NavigationEnd)
     .delay(0)
-    .mergeMap(() => this.activeLinks.filter(link => RendererTools.hasClass(link.elementRef.nativeElement, 'active')))
+    .mergeMap(() => this._activeLinks.filter(link => RendererTools.hasClass(link.elementRef.nativeElement, 'active')))
     .subscribe((activatedLink) => {
       this._activeLink = activatedLink.elementRef;
 
       const left = activatedLink.elementRef.nativeElement.offsetLeft;
       const width = activatedLink.elementRef.nativeElement.offsetWidth;
-      this._renderer.setStyle(this.linkOverlay.nativeElement, 'left', left + 'px');
-      this._renderer.setStyle(this.linkOverlay.nativeElement, 'width', width + 'px');
-      this._renderer.addClass(this.linkOverlay.nativeElement, 'in');
+      this._renderer.setStyle(this._linkOverlay.nativeElement, 'left', left + 'px');
+      this._renderer.setStyle(this._linkOverlay.nativeElement, 'width', width + 'px');
+      this._renderer.addClass(this._linkOverlay.nativeElement, 'in');
       this._unSlide();
     });
   }
 
   public ngOnInit(): void {
-    this._renderer.listen(this.linksContainer.nativeElement, 'mousemove', (event: MouseEvent) => {
+    this._renderer.listen(this._linksContainer.nativeElement, 'mousemove', (event: MouseEvent) => {
       if (!this._activeLink) {
         return;
       }
@@ -59,16 +70,16 @@ export class NavBarComponent implements OnInit {
       }
 
       if (classToAdd) {
-        this._renderer.addClass(this.linkOverlay.nativeElement, classToAdd);
+        this._renderer.addClass(this._linkOverlay.nativeElement, classToAdd);
       } else {
         this._unSlide();
       }
     });
-    this._renderer.listen(this.linksContainer.nativeElement, 'mouseleave', () => this._unSlide());
+    this._renderer.listen(this._linksContainer.nativeElement, 'mouseleave', () => this._unSlide());
   }
 
   private _unSlide(): void {
-    this._renderer.removeClass(this.linkOverlay.nativeElement, 'slide-right');
-    this._renderer.removeClass(this.linkOverlay.nativeElement, 'slide-left');
+    this._renderer.removeClass(this._linkOverlay.nativeElement, 'slide-right');
+    this._renderer.removeClass(this._linkOverlay.nativeElement, 'slide-left');
   }
 }
