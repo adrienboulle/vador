@@ -1,19 +1,11 @@
-FROM debian:jessie
-
-RUN apt-get check -y
-RUN apt-get update -y
-RUN apt-get install -y curl build-essential git
-
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-
-RUN apt-get install -y nodejs
+FROM 995892470641.dkr.ecr.eu-west-1.amazonaws.com/vador-base:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 
 # Bundle app source
 COPY . /usr/src/app/
+WORKDIR /usr/src/app/
 
 # Install app dependencies
 RUN npm install --production
