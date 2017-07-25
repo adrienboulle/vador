@@ -14,7 +14,7 @@ const RAW_TRADS = {
     en: 'I\'m available for your web projets, from conception to production.',
   },
   home_h1: {
-    fr: 'Je réalise vos projet !',
+    fr: 'Je réalise vos projets !',
     en: 'I make your projects a reality!',
   },
   home_h2_prop: {
@@ -30,7 +30,7 @@ const RAW_TRADS = {
     en: 'Price',
   },
   home_p_price_1: {
-    fr: 'A ce jour j\'ai un status d\'auto-entrepreneur.',
+    fr: 'A ce jour j\'ai un statut d\'auto-entrepreneur.',
     en: 'My status allow me not to charge VAT.',
   },
   home_p_price_2: {
