@@ -10,13 +10,11 @@ if [ "$NODE_ENV" = 'local' ]; then
   inlineSourceMap='--inlineSourceMap'
 fi
 
-if [ "$is_aot" = 'true' ]; then
+if [ "$IS_AOT" = 'true' ]; then
   node_modules/.bin/ngc -p tsconfig.json ${inlineSourceMap}
 fi
 
-echo $is_min
-
-if [ "$is_min" = 'true' ]; then
+if [ "$IS_MIN" = 'true' ]; then
   $gulp sass:min
   node_modules/.bin/tsc -p tsconfig.json ${inlineSourceMap}
   node_modules/.bin/webpack --config webpack/webpack.polyfills.config.js

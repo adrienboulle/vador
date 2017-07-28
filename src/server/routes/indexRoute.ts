@@ -2,7 +2,7 @@
 
 import { Router, Response, NextFunction } from 'express';
 
-const minify = require('html-minifier').minify;
+// const minify = require('html-minifier').minify;
 
 // NGFACTORY-START-IS_AOT:true
 import { renderModuleFactory } from '@angular/platform-server';
@@ -49,13 +49,15 @@ export class IndexRouter {
         url: req.url,
       })
       .then(response => {
-        res.send(minify(response, {
-          collapseBooleanAttributes: true,
-          conservativeCollapse: true,
-          collapseWhitespace: true,
-          minifyJS: true,
-          removeComments: true,
-        }));
+        res.send(response);
+
+        // res.send(minify(response, {
+        //   collapseBooleanAttributes: true,
+        //   conservativeCollapse: true,
+        //   collapseWhitespace: true,
+        //   minifyJS: true,
+        //   removeComments: true,
+        // }));
       });
       // NGFACTORY-END
     });

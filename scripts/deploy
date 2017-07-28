@@ -1,11 +1,9 @@
 #!/bin/bash
 
 tar cvf build.tar .build package.json
-
 git add build.tar
 
 eb deploy --staged
 
 git reset HEAD
-
 rm build.tar
