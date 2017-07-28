@@ -1,6 +1,8 @@
 #!/bin/bash
 
-git add -f .build
+tar cvf build.tar .build package.json
+
+git add build.tar
 
 eb deploy --staged
 
