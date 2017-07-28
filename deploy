@@ -7,3 +7,5 @@ git add build.tar
 eb deploy --staged
 
 git reset HEAD
+
+rm build.tar
