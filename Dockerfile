@@ -4,7 +4,7 @@ FROM 995892470641.dkr.ecr.eu-west-1.amazonaws.com/vador-base:latest
 RUN mkdir -p /usr/src/app
 
 # Bundle app source
-COPY . /usr/src/app/
+ADD build.tar /usr/src/app/
 WORKDIR /usr/src/app/
 
 # Install app dependencies
