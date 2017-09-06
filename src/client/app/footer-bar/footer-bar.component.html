@@ -1,3 +1,18 @@
-<div>
- footer
+<div class="main">
+  <div class="about">
+    <h5>{{'footer_about_h5' | i18n}}</h5>
+    <p>{{'footer_about_p' | i18n}}</p>
+  </div>
+  <div class="langs">
+    <h5>{{'footer_langs_h5' | i18n}}</h5>
+    <span>
+      <img class="flag" [class.current]="lang === 'fr'" (click)="changeLang('fr')" src="/imgs/fr.svg">
+    </span>
+    <span>
+      <img class="flag" [class.current]="lang === 'en'" (click)="changeLang('en')" src="/imgs/uk.svg">
+    </span>
+  </div>
+</div>
+<div class="copyright">
+  Copyright Adrien Boullé / 2017 © Tous droits réservés
 </div>

@@ -1,4 +1,4 @@
-const RAW_TRADS = {
+export const RAW_TRADS = {
   html_lang: {
     fr: 'fr-FR',
     en: 'en',
@@ -96,6 +96,20 @@ const RAW_TRADS = {
   skills_nav_link: {
     fr: '/competences',
     en: '/skills',
+  },
+
+  // FOOTER
+  footer_about_h5: {
+    fr: 'A propos',
+    en: 'About me',
+  },
+  footer_about_p: {
+    fr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    en: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+  },
+  footer_langs_h5: {
+    fr: 'Autres langues',
+    en: 'Other languages',
   },
 };
 

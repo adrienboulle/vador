@@ -4,7 +4,9 @@
 
 import { CusRequest } from './CusRequest';
 
-import { TradsHelper } from '../../client/shared/tools/TradsHelper';
+import { ROUTES_DATA } from '../../shared/routes';
+
+import { RAW_TRADS, TradsHelper } from '../../client/shared/tools/TradsHelper';
 
 export const pagesData: any = {
   '/': {
@@ -42,6 +44,23 @@ export namespace MetaHelper {
     const pageData = getPageData(path);
     const trads = TradsHelper.getTrads(req.cusContext.lang);
 
+    const canonical = 'https://www.adrien.tech' + req.cusContext.baseHref.slice(0, -1) + path;
+    const alternate = [];
+
+    for (let lang in RAW_TRADS.html_lang) {
+      if (lang === req.cusContext.lang) {
+        continue;
+      }
+
+      alternate.push({
+        type: 'alternate',
+        value: {
+          href: 'https://www.adrien.tech/' + (lang === 'fr' ? '' : lang + '/') + ROUTES_DATA[path === '/' ? 'void' : path.substr(1)][lang],
+          hreflang: RAW_TRADS.html_lang[lang],
+        },
+      });
+    }
+
     return [
       {
         type: 'charset',
@@ -69,8 +88,9 @@ export namespace MetaHelper {
       },
       {
         type: 'canonical',
-        value: 'https://www.adrien.tech' + req.cusContext.baseHref.slice(0, -1) + path,
+        value: canonical,
       },
+      ...alternate,
     ];
   }
 }

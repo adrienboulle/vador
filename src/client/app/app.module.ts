@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 
+import { ROUTES_DATA } from '../../shared/routes';
+
 import { SharedModule } from '../shared/shared.module';
 
 import { I18nService } from '../shared/services/i18n.service';
@@ -17,10 +19,10 @@ enableProdMode();
 
 // KEEP-START-IS_MIN:true
 export const ROUTES: Route[] = [
-  { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
-  { path: 'skills', loadChildren: './skills/skills.module#SkillsModule' },
-  { path: 'competences', loadChildren: './skills/skills.module#SkillsModule' },
-  { path: '', loadChildren: './home/home.module#HomeModule' },
+  { path: 'contact', loadChildren: './contact/contact.module#ContactModule', data: ROUTES_DATA.contact },
+  { path: 'skills', loadChildren: './skills/skills.module#SkillsModule', data: ROUTES_DATA.skills },
+  { path: 'competences', loadChildren: './skills/skills.module#SkillsModule', data: ROUTES_DATA.competences },
+  { path: '', loadChildren: './home/home.module#HomeModule', data: ROUTES_DATA.void },
 ];
 // KEEP-END
 
@@ -43,10 +45,10 @@ export function getChildrenContact(): any {
 }
 
 export const ROUTES: Route[] = [
-  { path: 'contact', loadChildren: getChildrenContact },
-  { path: 'skills', loadChildren: getChildrenSkills },
-  { path: 'competences', loadChildren: getChildrenSkills },
-  { path: '', loadChildren: getChildrenHome },
+  { path: 'contact', loadChildren: getChildrenContact, data: ROUTES_DATA.contact },
+  { path: 'skills', loadChildren: getChildrenSkills, data: ROUTES_DATA.skills },
+  { path: 'competences', loadChildren: getChildrenSkills, data: ROUTES_DATA.competences },
+  { path: '', loadChildren: getChildrenHome, data: ROUTES_DATA.void },
 ];
 // KEEP-END
 // NGFACTORY-END

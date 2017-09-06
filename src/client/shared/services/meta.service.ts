@@ -78,6 +78,16 @@ export const metaDescriptions = {
       href: 'value',
     },
   },
+  alternate: {
+    tagName: 'link',
+    dataType: 'attributes',
+    mainAttribute: 'href',
+    attributes: {
+      rel: 'alternate',
+      href: 'value',
+      hreflang: 'value',
+    },
+  },
 };
 
 @Injectable()
@@ -122,7 +132,7 @@ export class MetaService {
             let attrValue = metaTagDescription.attributes[attrName];
 
             if (metaTagDescription.attributes[attrName] === 'value') {
-              attrValue = meta.value;
+              attrValue = typeof meta.value === 'string' ? meta.value : meta.value[attrName];
             }
 
             if (metaTagDescription.attributes[attrName] === 'type') {

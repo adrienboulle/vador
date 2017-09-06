@@ -1,4 +1,41 @@
 footer-bar {
-  @include flex(center, center);
+  @include flex(center, center, column);
   height: $footerHeight;
+
+  .main {
+    @include flex(center, flex-start, row);
+
+    .about {
+      width: 50%;
+    }
+
+    .langs {
+      @include flex(center, flex-end, column);
+      width: 50%;
+
+      .flag {
+        height: 15px;
+        width: 30px;
+        cursor: pointer;
+
+        opacity: 0.5;
+        transition: opacity ease-in-out $speedLinkOverayApear;
+
+        &.current {
+          cursor: default;
+        }
+
+        &.current,
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: auto;
+    margin-bottom: 0.2em;
+    font-size: 0.8em;
+  }
 }
