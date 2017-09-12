@@ -13,22 +13,26 @@ footer-bar {
       @include flex(center, flex-end, column);
       width: 50%;
 
-      .flag {
-        height: 15px;
-        width: 30px;
+      a {
+        opacity: 0.5;
         cursor: pointer;
 
-        opacity: 0.5;
         transition: opacity ease-in-out $speedLinkOverayApear;
 
         &.current {
           cursor: default;
+          pointer-events: none;
         }
 
         &.current,
         &:hover {
           opacity: 1;
         }
+      }
+
+      .flag {
+        height: 15px;
+        width: 30px;
       }
     }
   }

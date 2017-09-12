@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
   }
 
   @HostBinding('class.ssr')
-  public getClassSsr(): boolean {
-    return window.isSsr;
+  public get getClassSsr(): boolean {
+    return window.isSsr === true;
   }
 
   @HostListener('window:scroll')

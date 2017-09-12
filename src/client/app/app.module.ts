@@ -22,6 +22,7 @@ export const ROUTES: Route[] = [
   { path: 'contact', loadChildren: './contact/contact.module#ContactModule', data: ROUTES_DATA.contact },
   { path: 'skills', loadChildren: './skills/skills.module#SkillsModule', data: ROUTES_DATA.skills },
   { path: 'competences', loadChildren: './skills/skills.module#SkillsModule', data: ROUTES_DATA.competences },
+  { path: 'ajs', loadChildren: './ajs/ajs.module#AjsModule', data: ROUTES_DATA.ajs },
   { path: '', loadChildren: './home/home.module#HomeModule', data: ROUTES_DATA.void },
 ];
 // KEEP-END
@@ -31,6 +32,7 @@ export const ROUTES: Route[] = [
 import { HomeModuleNgFactory } from './home/home.module.ngfactory';
 import { SkillsModuleNgFactory } from './skills/skills.module.ngfactory';
 import { ContactModuleNgFactory } from './contact/contact.module.ngfactory';
+import { AjsModuleNgFactory } from './ajs/ajs.module.ngfactory';
 
 export function  getChildrenHome(): any {
   return Promise.resolve(HomeModuleNgFactory);
@@ -44,10 +46,15 @@ export function getChildrenContact(): any {
   return Promise.resolve(ContactModuleNgFactory);
 }
 
+export function  getChildrenAjs(): any {
+  return Promise.resolve(AjsModuleNgFactory);
+}
+
 export const ROUTES: Route[] = [
   { path: 'contact', loadChildren: getChildrenContact, data: ROUTES_DATA.contact },
   { path: 'skills', loadChildren: getChildrenSkills, data: ROUTES_DATA.skills },
   { path: 'competences', loadChildren: getChildrenSkills, data: ROUTES_DATA.competences },
+  { path: 'ajs', loadChildren: getChildrenAjs, data: ROUTES_DATA.ajs },
   { path: '', loadChildren: getChildrenHome, data: ROUTES_DATA.void },
 ];
 // KEEP-END

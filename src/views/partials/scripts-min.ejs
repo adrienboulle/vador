@@ -9,7 +9,14 @@
     <!--SCRIPTS CONTACT END-->
 <%
     break;
-    case '/skills': %>
+  case '/skills':
+  case '/competences': %>
     <!--SCRIPTS SKILLS-->
     <!--SCRIPTS SKILLS END-->
-<% } %>
+<%
+  case '/ajs': %>
+    <!--SCRIPTS AJS-->
+    <!--SCRIPTS AJS END-->
+<% default:
+    break;
+} %>

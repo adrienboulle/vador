@@ -25,6 +25,10 @@ export const pagesData: any = {
     title: 'skills_meta_title',
     description: 'skills_meta_description',
   },
+  '/ajs': {
+    title: 'ajs_meta_title',
+    description: 'ajs_meta_description',
+  },
 };
 
 export namespace MetaHelper {

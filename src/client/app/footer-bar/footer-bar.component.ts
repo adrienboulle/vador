@@ -15,7 +15,7 @@ export class FooterBarComponent {
     return this._i18nService.lang;
   }
 
-  public changeLang(lang: string) {
-    this._i18nService.changeLang(lang);
+  public getChangeLangUrl(lang: string): string {
+    return this._i18nService.getChangeLangUrl(lang);
   }
 }

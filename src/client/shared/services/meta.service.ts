@@ -1,8 +1,6 @@
 import { Injectable, Renderer2, ViewEncapsulation, RendererFactory2 } from '@angular/core';
 import { PlatformState } from '@angular/platform-server';
 
-import { RendererTools } from '../tools/RendererTools';
-
 export const metaDescriptions = {
   lang: {
     tagName: 'html',
@@ -157,7 +155,7 @@ export class MetaService {
 
       if (this._isTag(child, metaTagDescription.tagName)) {
         if (!metaTagDescription.mainAttribute
-            || (metaTagDescription.mainAttribute && RendererTools.getAttribute(child, metaTagDescription.mainAttribute) === value)) {
+            || (metaTagDescription.mainAttribute && child.getAttribute(metaTagDescription.mainAttribute) === value)) {
           metaTags.push(child);
         }
       }
@@ -180,7 +178,7 @@ export class MetaService {
   }
 
   private _isTag(el: any, tagName: string): boolean {
-    return el.type === 'tag' && el.name === tagName;
+    return el.tagName && el.tagName.toLowerCase() === tagName.toLowerCase();
   }
 
   private _getHead(document: any): any {

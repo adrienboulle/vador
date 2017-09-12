@@ -6,10 +6,14 @@
   <div class="langs">
     <h5>{{'footer_langs_h5' | i18n}}</h5>
     <span>
-      <img class="flag" [class.current]="lang === 'fr'" (click)="changeLang('fr')" src="/imgs/fr.svg">
+      <a [class.current]="lang === 'fr'" [href]="getChangeLangUrl('fr')">
+        <img class="flag" src="/imgs/fr.svg">
+      </a>
     </span>
     <span>
-      <img class="flag" [class.current]="lang === 'en'" (click)="changeLang('en')" src="/imgs/uk.svg">
+      <a [class.current]="lang === 'en'" [href]="getChangeLangUrl('en')">
+        <img class="flag" src="/imgs/uk.svg">
+      </a>
     </span>
   </div>
 </div>

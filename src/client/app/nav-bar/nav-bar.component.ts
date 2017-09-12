@@ -5,7 +5,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
-import { RendererTools } from '../../shared/tools/RendererTools';
 
 declare let window: any;
 
@@ -40,7 +39,7 @@ export class NavBarComponent implements OnInit {
     router.events
     .filter(event => event instanceof NavigationEnd)
     .delay(0)
-    .mergeMap(() => this._activeLinks.filter(link => RendererTools.hasClass(link.elementRef.nativeElement, 'active')))
+    .mergeMap(() => this._activeLinks.filter(link => link.elementRef.nativeElement.classList.contains('active')))
     .subscribe((activatedLink) => {
       this._activeLink = activatedLink.elementRef;
 

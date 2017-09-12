@@ -98,6 +98,24 @@ export const RAW_TRADS = {
     en: '/skills',
   },
 
+  // AJS
+  ajs_meta_title: {
+    fr: 'AJS | adrien.tech',
+    en: 'AJS | adrien.tech',
+  },
+  ajs_meta_description: {
+    fr: 'AJS bac à sable.',
+    en: 'AJS sandbox.',
+  },
+  ajs_h1: {
+    fr: 'Testez AJS !',
+    en: 'test AJS!',
+  },
+  ajs_nav_link: {
+    fr: '/ajs',
+    en: '/ajs',
+  },
+
   // FOOTER
   footer_about_h5: {
     fr: 'A propos',

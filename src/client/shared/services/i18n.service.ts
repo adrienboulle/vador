@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
 
 import { TradsHelper } from '../tools/TradsHelper';
@@ -12,8 +12,9 @@ export class I18nService {
   private _lang: string;
   private _defaultLang: 'fr';
   private _langs: string[] = ['fr', 'en'];
+  private _currentRouteData: any;
 
-  constructor(locationStrategy: LocationStrategy, private _activatedRoute: ActivatedRoute) {
+  constructor(locationStrategy: LocationStrategy, router: Router, private _activatedRoute: ActivatedRoute) {
     const baseHref = locationStrategy.getBaseHref();
 
     if (baseHref === '/') {
@@ -21,6 +22,20 @@ export class I18nService {
     } else {
       this._lang = baseHref.split('/')[1];
     }
+
+    router.events
+    .filter(event => event instanceof NavigationEnd)
+    .map(() => this._activatedRoute)
+    .map(route => {
+      while (route.firstChild) {
+        route = route.firstChild;
+      }
+
+      return route;
+    })
+    .filter(route => route.outlet === 'primary')
+    .mergeMap(route => route.data)
+    .subscribe(data => this._currentRouteData = data);
   }
 
   public get lang(): string {
@@ -39,23 +54,11 @@ export class I18nService {
     return TradsHelper.getTrads(this.lang)[key];
   }
 
-  public changeLang(lang: string): string {
-    if (this.langs.indexOf(lang) === -1) {
+  public getChangeLangUrl(lang: string): string {
+    if (!this._currentRouteData || this.langs.indexOf(lang) === -1) {
       return;
     }
 
-    Observable.from([this._activatedRoute])
-    .map(route => {
-      while (route.firstChild) {
-        route = route.firstChild;
-      }
-
-      return route;
-    })
-    .filter(route => route.outlet === 'primary')
-    .mergeMap(route => route.data)
-    .subscribe(data => {
-      window.location.href = (lang !== 'fr' ? '/' + lang : '') + '/' + data[lang];
-    });
+    return (lang !== 'fr' ? '/' + lang : '') + '/' + this._currentRouteData[lang];
   }
 }

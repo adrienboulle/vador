@@ -44,7 +44,7 @@ const linkJs = gulp =>
     ],
     startTag: '<!--SCRIPTS CONTACT-->',
     endTag: '<!--SCRIPTS CONTACT END-->',
-    fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
+    fileTmpl: '<script src="' + cdn2 + '/%s"></script>',
     appRoot: '.build/public/',
   }))
   .pipe(linker({
@@ -53,7 +53,16 @@ const linkJs = gulp =>
     ],
     startTag: '<!--SCRIPTS SKILLS-->',
     endTag: '<!--SCRIPTS SKILLS END-->',
-    fileTmpl: '<script src="' + cdn3 + '/%s"></script>',
+    fileTmpl: '<script src="' + cdn2 + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/js/ajs-*.js',
+    ],
+    startTag: '<!--SCRIPTS AJS-->',
+    endTag: '<!--SCRIPTS AJS END-->',
+    fileTmpl: '<script src="' + cdn2 + '/%s"></script>',
     appRoot: '.build/public/',
   }))
   .pipe(linker({

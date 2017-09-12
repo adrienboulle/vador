@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '../../shared/shared.module';
+
+import { AjsComponent } from './ajs.component';
+
+@NgModule({
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      { path: '', component: AjsComponent, pathMatch: 'full'},
+    ]),
+  ],
+  declarations: [
+    AjsComponent,
+  ],
+})
+export class AjsModule {}

@@ -21,6 +21,7 @@ if [ "$IS_MIN" = 'true' ]; then
   node_modules/.bin/webpack --config webpack/webpack.server.config.js
   node_modules/.bin/webpack --config webpack/webpack.home.config.js
   node_modules/.bin/webpack --config webpack/webpack.contact.config.js
+  node_modules/.bin/webpack --config webpack/webpack.skills.config.js
 
   mkdir .build/private/js
   cp .build/public/js/server-*.js .build/private/js/server-bundle.js
