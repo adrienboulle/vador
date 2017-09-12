@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { APP_CONFIG } from './config/config';
@@ -11,7 +11,7 @@ import { I18n } from './pipes/i18n.pipe';
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -23,7 +23,7 @@ import { I18n } from './pipes/i18n.pipe';
   ],
   exports: [
     CommonModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     I18n,

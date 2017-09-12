@@ -36,6 +36,7 @@ app {
     box-shadow: $headerBoxShadow;
     max-height: $headerHeight;
     min-height: $headerHeightScrolled;
+    z-index: $zIndexHeader;
 
     &.smooth-height {
       transition: height $headerTransition;

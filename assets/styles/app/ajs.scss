@@ -1,0 +1,14 @@
+ajs {
+  .line {
+    @include flex(space-between, flex-start, row);
+
+    .row {
+      width: calc(50% - 1em);
+      margin-bottom: 1em;
+
+      .CodeMirror {
+        height: 100%;
+      }
+    }
+  }
+}

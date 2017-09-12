@@ -2,11 +2,18 @@
 
 'use strict';
 
+const domino = require('domino');
+
 import { conf } from '../conf';
 
 export namespace Window {
   export function init(global: any = {}, meta?: any) {
-    global.window = {};
+    const window = domino.createWindow('');
+    const document = window.document;
+
+    global.window = window;
+    global.document = document;
+    global.navigator = window.navigator;
     global.window.isSsr = true;
     global.window.meta = meta;
     global.window.env = {

@@ -1,4 +1,4 @@
-import { NgModule, ApplicationRef, RendererFactory2 } from '@angular/core';
+import { NgModule, ApplicationRef, RendererFactory2, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServerModule, ɵServerRendererFactory2 } from '@angular/platform-server';
 

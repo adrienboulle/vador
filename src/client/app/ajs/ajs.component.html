@@ -1,1 +1,32 @@
 <h1>{{'ajs_h1' | i18n}}</h1>
+<div class="line">
+  <div class="row">
+    <codemirror *ngIf="isSsr"
+                [(ngModel)]="code.html"
+                [config]="config.html"
+                (focus)="onFocus()"
+                (blur)="onBlur()">
+    </codemirror>
+  </div>
+  <div class="row">
+    <codemirror *ngIf="isSsr"
+                [(ngModel)]="code.css"
+                [config]="config.css"
+                (focus)="onFocus()"
+                (blur)="onBlur()">
+    </codemirror>
+  </div>
+</div>
+<div class="line">
+  <div class="row">
+    <codemirror *ngIf="isSsr"
+                [(ngModel)]="code.ts"
+                [config]="config.ts"
+                (focus)="onFocus()"
+                (blur)="onBlur()">
+    </codemirror>
+  </div>
+  <div class="row">
+
+  </div>
+</div>
