@@ -14,4 +14,11 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
   },
+  externals: {
+    ajs: 'commonjs ajs',
+  },
+  node: {
+    __filename: true,
+    __dirname: true,
+  },
 };
