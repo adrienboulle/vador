@@ -16,6 +16,13 @@ module.exports = {
   },
   externals: {
     ajs: 'commonjs ajs',
+    express: 'commonjs express',
+    domino: 'commonjs domino',
+    'express-ejs-layouts': 'commonjs express-ejs-layouts',
+    'html-minifier': 'commonjs html-minifier',
+    rimraf: 'commonjs rimraf',
+    typescript: 'commonjs typescript',
+    'body-parser': 'commonjs body-parser',
   },
   node: {
     __filename: true,

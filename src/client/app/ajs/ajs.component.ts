@@ -63,14 +63,18 @@ export class AjsComponent {
 
   private _changeTimeout: any;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {
+    this.onChange(null);
+  }
 
   public get isSsr(): boolean {
     return !window.isSsr;
   }
 
-  public onChange(type: string, value: string): void {
-    this.code[type] = value;
+  public onChange(type: string|null, value?: string): void {
+    if (type !== null) {
+      this.code[type] = value;
+    }
 
     if (this._changeTimeout) {
       clearTimeout(this._changeTimeout);
