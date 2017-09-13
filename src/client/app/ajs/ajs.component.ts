@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 declare let window: any;
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
+
+import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'ajs',
@@ -12,22 +15,22 @@ import 'codemirror/mode/css/css';
 export class AjsComponent {
   public code: { html: string, css: string, ts: string } = {
     html: '<app>\n' +
-    '  <hello-cpm></hello-cpm>\n' +
+    '  <hello-cmp></hello-cmp>\n' +
     '</app>',
     css: 'app {\n' +
     '  background-color: #DBF5F4;\n' +
     '}',
-    ts: 'import { Component } from \'../ajs_module/lib/api\';\n' +
+    ts: 'import { Component } from \'ajs/lib/api\';\n' +
     '\n' +
     '@Component({\n' +
-    '  selector: \'lolo-cmp\',\n' +
-    '  template: \'<div>LOLO {{lolo}}</div>\',\n' +
+    '  selector: \'hello-cmp\',\n' +
+    '  template: \'<div>Hello {{value}}</div>\',\n' +
     '})\n' +
     'export class LoloComp {\n' +
-    '  public lolo: string;\n' +
+    '  public value: string;\n' +
     '\n' +
     '  constructor() {\n' +
-    '    this.lolo = \'trololo\';\n' +
+    '    this.value = \'Wolrd!\';\n' +
     '  }\n' +
     '}\n',
   };
@@ -55,6 +58,11 @@ export class AjsComponent {
     },
   };
 
+  @ViewChild('iframe')
+  private _iframe: ElementRef;
+
+  constructor(private _http: HttpClient) {}
+
   public get isSsr(): boolean {
     return !window.isSsr;
   }
@@ -64,6 +72,14 @@ export class AjsComponent {
   }
 
   public onBlur(): void {
-    console.log(this.code);
+    this._http
+    .post( '/ajspreview', this.code)
+    .toPromise()
+    .then((rep: any) => {
+      this._iframe.nativeElement.contentWindow.document.open();
+      this._iframe.nativeElement.contentWindow.document.write(rep.content);
+      this._iframe.nativeElement.contentWindow.document.close();
+    })
+    .catch(() => {});
   }
 }

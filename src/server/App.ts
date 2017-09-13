@@ -14,9 +14,11 @@ import { context } from './middlewares/context';
 import { CusRequest } from './tools/CusRequest';
 
 import { indexRouter } from './routes/indexRoute';
+import { ajspreviewRouter } from './routes/ajspreviewRoute';
 
 const routes: { routes: string[], router: Router }[] = [
   indexRouter,
+  ajspreviewRouter,
 ];
 
 declare let global: any;
