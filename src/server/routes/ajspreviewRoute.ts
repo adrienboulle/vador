@@ -9,6 +9,7 @@ import { Router, Response, NextFunction } from 'express';
 import { CusRequest } from '../tools/CusRequest';
 
 const ajs = require('ajs');
+const ts = require('typescript');
 
 const tmpDir = __dirname + '/../../../../../.tmp';
 
@@ -36,8 +37,35 @@ export class AjspreviewRouter {
     req.body.html = req.body.html.replace(/\n/g, ' ');
     req.body.css = req.body.css.replace(/\n/g, ' ');
 
+    const inputFileName = 'module.ts';
+    const sourceFile = ts.createSourceFile(inputFileName, req.body.ts, ts.ScriptTarget.ES5);
+
+    // Output
+    let outputText;
+
+    ts.createProgram(['module.ts'], {
+      module: 1,
+      noLib: true,
+      noResolve: true,
+      suppressOutputPathCheck: true,
+      emitDecoratorMetadata: true,
+      target: 1,
+    }, {
+      getSourceFile: fileName => fileName.indexOf('module') === 0 ? sourceFile : undefined,
+      writeFile: (_name, text) => outputText = text,
+      getDefaultLibFileName: () => 'lib.d.ts',
+      useCaseSensitiveFileNames: () => false,
+      getCanonicalFileName: fileName => fileName,
+      getCurrentDirectory: () => '',
+      getNewLine: () => '\n',
+      fileExists: fileName => fileName === inputFileName,
+      readFile: () => '',
+      directoryExists: () => true,
+      getDirectories: () => [],
+    }).emit();
+
     fs.mkdirSync(tmpDir + '/' + rand);
-    fs.writeFileSync(tmpDir + '/' + rand + '/cmps.js', req.body.js);
+    fs.writeFileSync(tmpDir + '/' + rand + '/cmps.js', outputText);
 
     fnc(null, { content: req.body.html, subPath: rand }, (err, content) => {
       if (!err) {

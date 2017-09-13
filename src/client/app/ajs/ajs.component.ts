@@ -8,8 +8,6 @@ import 'codemirror/mode/css/css';
 
 import 'rxjs/add/operator/toPromise';
 
-declare let ts: any;
-
 @Component({
   selector: 'ajs',
   templateUrl: 'ajs.component.html',
@@ -63,66 +61,31 @@ export class AjsComponent {
   @ViewChild('iframe')
   private _iframe: ElementRef;
 
+  private _changeTimeout: any;
+
   constructor(private _http: HttpClient) {}
 
   public get isSsr(): boolean {
     return !window.isSsr;
   }
 
-  public onFocus(): void {
+  public onChange(type: string, value: string): void {
+    this.code[type] = value;
 
-  }
-
-  public onBlur(): void {
-    const out = this._transpileModule();
-
-    if (!out) {
-      return;
+    if (this._changeTimeout) {
+      clearTimeout(this._changeTimeout);
     }
 
-    this._http
-    .post('/ajspreview', {
-      js: this._transpileModule(),
-      css: this.code.css,
-      html: this.code.html,
-    })
-    .toPromise()
-    .then((rep: any) => {
-      this._iframe.nativeElement.contentWindow.document.open();
-      this._iframe.nativeElement.contentWindow.document.write(rep.content);
-      this._iframe.nativeElement.contentWindow.document.close();
-    })
-    .catch(() => {});
-  }
-
-  private _transpileModule(): string|null {
-    const inputFileName = 'module.ts';
-    const sourceFile = ts.createSourceFile(inputFileName, this.code.ts, ts.ScriptTarget.ES5);
-
-    // Output
-    let outputText;
-
-    ts.createProgram(['module.ts'], {
-      module: 1,
-      noLib: true,
-      noResolve: true,
-      suppressOutputPathCheck: true,
-      emitDecoratorMetadata: true,
-      target: 1,
-    }, {
-      getSourceFile: fileName => fileName.indexOf('module') === 0 ? sourceFile : undefined,
-      writeFile: (_name, text) => outputText = text,
-      getDefaultLibFileName: () => 'lib.d.ts',
-      useCaseSensitiveFileNames: () => false,
-      getCanonicalFileName: fileName => fileName,
-      getCurrentDirectory: () => '',
-      getNewLine: () => '\n',
-      fileExists: fileName => fileName === inputFileName,
-      readFile: () => '',
-      directoryExists: () => true,
-      getDirectories: () => [],
-    }).emit();
-
-    return outputText;
+    this._changeTimeout = setTimeout(() => {
+      this._http
+      .post('/ajspreview', this.code)
+      .toPromise()
+      .then((rep: any) => {
+        this._iframe.nativeElement.contentWindow.document.open();
+        this._iframe.nativeElement.contentWindow.document.write(rep.content);
+        this._iframe.nativeElement.contentWindow.document.close();
+      })
+      .catch(() => {});
+    }, 250);
   }
 }

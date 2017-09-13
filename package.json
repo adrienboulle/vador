@@ -72,6 +72,7 @@
     "tslib": "^1.7.1",
     "tslint": "5.7.0",
     "typescript": "2.5.2",
+    "typescript-services": "^0.1.5",
     "webpack": "3.5.6",
     "zone.js": "0.8.17"
   },
