@@ -93,6 +93,15 @@ const linkStyles = gulp =>
     fileTmpl: '<link rel="stylesheet" href="' + cdn1 + '/%s">',
     appRoot: '.build/public/',
   }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/styles/codemirror.css',
+    ],
+    startTag: '<!--STYLES CODEMIRROR-->',
+    endTag: '<!--STYLES CODEMIRROR END-->',
+    fileTmpl: '<link rel="stylesheet" href="' + cdn2 + '/%s">',
+    appRoot: '.build/public/',
+  }))
   .pipe(gulp.dest('.build/private/src/views'));
 
 module.exports = {
