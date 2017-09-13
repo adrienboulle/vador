@@ -10,13 +10,8 @@ import { CusRequest } from '../tools/CusRequest';
 
 const ajs = require('ajs');
 
-const ajsDir = __dirname + '/../../../../../ajs';
 const tmpDir = __dirname + '/../../../../../.tmp';
 
-rimraf(ajsDir, () => {
-  fs.mkdirSync(ajsDir);
-  fs.writeFileSync(ajsDir + '/cmps.ts', '');
-});
 rimraf(tmpDir, () => {
   fs.mkdirSync(tmpDir);
 });
@@ -41,10 +36,10 @@ export class AjspreviewRouter {
     req.body.html = req.body.html.replace(/\n/g, ' ');
     req.body.css = req.body.css.replace(/\n/g, ' ');
 
-    fs.mkdirSync(ajsDir + '/' + rand);
-    fs.writeFileSync(ajsDir + '/' + rand + '/cmps.ts', req.body.ts);
+    fs.mkdirSync(tmpDir + '/' + rand);
+    fs.writeFileSync(tmpDir + '/' + rand + '/cmps.js', req.body.js);
 
-    fnc(null, { content: req.body.html, compile: true, subPath: rand }, (err, content) => {
+    fnc(null, { content: req.body.html, subPath: rand }, (err, content) => {
       if (!err) {
         const window = domino.createWindow(content);
         const document = window.document;
@@ -57,7 +52,6 @@ export class AjspreviewRouter {
 
       res.send({ content: err ? 'ERROR' : content });
 
-      rimraf(ajsDir + '/' + rand, () => {});
       rimraf(tmpDir + '/' + rand, () => {});
     });
   }
