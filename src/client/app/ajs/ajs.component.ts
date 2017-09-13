@@ -107,6 +107,7 @@ export class AjsComponent {
       noLib: true,
       noResolve: true,
       suppressOutputPathCheck: true,
+      emitDecoratorMetadata: true,
       target: 1,
     }, {
       getSourceFile: fileName => fileName.indexOf('module') === 0 ? sourceFile : undefined,

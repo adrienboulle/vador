@@ -50,7 +50,7 @@ export class AjspreviewRouter {
         content = document.innerHTML;
       }
 
-      res.send({ content: err ? 'ERROR' : content });
+      res.send({ content: err ? err : content });
 
       rimraf(tmpDir + '/' + rand, () => {});
     });
