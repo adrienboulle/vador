@@ -26,6 +26,7 @@ System.config({
     'ng2-codemirror': 'npm:ng2-codemirror/lib',
     'codemirror/mode': 'npm:codemirror/mode',
     codemirror: 'npm:codemirror/lib',
+    'angular-2-local-storage': 'npm:angular-2-local-storage/dist',
   },
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -41,6 +42,10 @@ System.config({
     },
     '/js/node_modules/codemirror/lib': {
       main: 'codemirror.js',
+    },
+    '/js/node_modules/angular-2-local-storage/dist': {
+      main: 'index.js',
+      defaultExtension: 'js',
     },
   },
 });

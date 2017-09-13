@@ -1,39 +1,22 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-declare let window: any;
+import { LocalStorageService } from 'angular-2-local-storage';
+
+import 'rxjs/add/operator/toPromise';
+
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 
-import 'rxjs/add/operator/toPromise';
+declare let window: any;
 
 @Component({
   selector: 'ajs',
   templateUrl: 'ajs.component.html',
 })
 export class AjsComponent {
-  public code: { html: string, css: string, ts: string } = {
-    html: '<app>\n' +
-    '  <hello-cmp></hello-cmp>\n' +
-    '</app>',
-    css: 'app {\n' +
-    '  background-color: #DBF5F4;\n' +
-    '}',
-    ts: 'import { Component } from \'ajs/lib/api\';\n' +
-    '\n' +
-    '@Component({\n' +
-    '  selector: \'hello-cmp\',\n' +
-    '  template: \'<div>Hello {{value}}</div>\',\n' +
-    '})\n' +
-    'export class LoloComp {\n' +
-    '  public value: string;\n' +
-    '\n' +
-    '  constructor() {\n' +
-    '    this.value = \'Wolrd!\';\n' +
-    '  }\n' +
-    '}\n',
-  };
+  public code: { html: string, css: string, ts: string };
   public config: { html: any, css: any, ts: any } = {
     html: {
       lineNumbers: true,
@@ -63,7 +46,13 @@ export class AjsComponent {
 
   private _changeTimeout: any;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private _localStorageService: LocalStorageService) {
+    this.code = this._localStorageService.get('code') || {
+      html: '<app>\n  <hello-cmp></hello-cmp>\n</app>',
+      css: 'app {\n  background-color: #DBF5F4;\n}',
+      ts: 'import { Component } from \'ajs/lib/api\';\n\n@Component({\n  selector: \'hello-cmp\',\n  template: \'<div>Hello {{value}}</div>\',\n})\nexport class LoloComp {\n  public value: string;\n\n  constructor() {\n    this.value = \'Wolrd!\';\n  }\n}\n',
+    };
+
     this.onChange(null);
   }
 
@@ -81,6 +70,8 @@ export class AjsComponent {
     }
 
     this._changeTimeout = setTimeout(() => {
+      this._localStorageService.set('code', this.code);
+
       this._http
       .post('/ajspreview', this.code)
       .toPromise()
@@ -90,6 +81,6 @@ export class AjsComponent {
         this._iframe.nativeElement.contentWindow.document.close();
       })
       .catch(() => {});
-    }, 250);
+    }, 200);
   }
 }
