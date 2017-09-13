@@ -54,14 +54,15 @@ mkdir .build/private
 mkdir .build/public
 mkdir .build/private/src
 
-cp -r assets/imgs .build/public/imgs
-cp node_modules/codemirror/lib/codemirror.css .build/public/styles/codemirror.css
 
 if [ "$is_min" = 'true' ]; then
   $gulp sass:min
 else
   $gulp sass:dev
 fi
+
+cp -r assets/imgs .build/public/imgs
+cp node_modules/codemirror/lib/codemirror.css .build/public/styles/codemirror.css
 
 scripts/ts
 
