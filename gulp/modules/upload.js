@@ -1,6 +1,5 @@
 'use strict';
 
-const gulp = require('gulp');
 const gulpS3 = require('gulp-s3-upload');
 
 const config = require('../../src/server/config/env/production');
@@ -15,7 +14,11 @@ const s3 = gulpS3({
 const upload = gulp =>
   Promise.all([
     new Promise((resolve, reject) =>
-      gulp.src(['.build/public/js/**', '.build/public/styles/**'], { base: '.build/public' })
+      gulp.src([
+        '.build/public/js/**',
+        '.build/public/styles/**',
+        '.build/public/imgs/**',
+      ], { base: '.build/public' })
       .pipe(s3({
         Bucket: config.S3.bucketName,
         ACL: 'public-read',
