@@ -49,7 +49,7 @@ export class AjsComponent {
   constructor(private _http: HttpClient, private _localStorageService: LocalStorageService) {
     this.code = this._localStorageService.get('code') || {
       html: '<app>\n  <hello-cmp></hello-cmp>\n</app>',
-      css: 'app {\n  background-color: #DBF5F4;\n}',
+      css: 'app {\n  display: block;\n  background-color: #DBF5F4;\n}',
       ts: 'import { Component } from \'ajs/lib/api\';\n\n@Component({\n  selector: \'hello-cmp\',\n  template: \'<div>Hello {{value}}</div>\',\n})\nexport class LoloComp {\n  public value: string;\n\n  constructor() {\n    this.value = \'World!\';\n  }\n}\n',
     };
 

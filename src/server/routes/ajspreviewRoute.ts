@@ -3,13 +3,13 @@
 const fs = require('fs');
 const rimraf = require('rimraf');
 const domino = require('domino');
+const ts = require('typescript');
+
+const ajs = require('ajs');
 
 import { Router, Response, NextFunction } from 'express';
 
 import { CusRequest } from '../tools/CusRequest';
-
-const ajs = require('ajs');
-const ts = require('typescript');
 
 const tmpDir = __dirname + '/../../../../../.tmp';
 
@@ -32,10 +32,11 @@ export class AjspreviewRouter {
   }
 
   public index(req: CusRequest, res: Response, next: NextFunction) {
-    const rand = Math.floor(1000000 * Math.random());
+    const rand = Math.floor(100000000 * Math.random());
 
     req.body.html = req.body.html.replace(/\n/g, ' ');
     req.body.css = req.body.css.replace(/\n/g, ' ');
+    req.body.ts = req.body.ts.replace(/`/g, '\'');
 
     const inputFileName = 'module.ts';
     const sourceFile = ts.createSourceFile(inputFileName, req.body.ts, ts.ScriptTarget.ES5);
@@ -65,7 +66,34 @@ export class AjspreviewRouter {
     }).emit();
 
     fs.mkdirSync(tmpDir + '/' + rand);
-    fs.writeFileSync(tmpDir + '/' + rand + '/cmps.js', outputText);
+    fs.writeFileSync(tmpDir + '/' + rand + '/cmps.js', `
+      const { VM } = require('vm2');
+
+      const localExports = {};
+
+      const vm = new VM({
+        timeout: 2000,
+        sandbox: {
+          Reflect,
+          module: {},
+          exports: localExports,
+          console: {
+            log: () => {},
+          },
+          require: val => {
+            if (val === 'ajs/lib/api') {
+              return require('ajs/lib/api');
+            }
+  
+            throw Error('Not allowed to require ' + val);
+          },
+        },
+      });
+
+      vm.run(\`${outputText}\`);
+      
+      module.exports = localExports;
+    `);
 
     fnc(null, { content: req.body.html, subPath: rand }, (err, content) => {
       if (!err) {
