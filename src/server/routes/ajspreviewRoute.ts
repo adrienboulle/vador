@@ -70,7 +70,6 @@ export class AjspreviewRouter {
       const { VM } = require('vm2');
 
       const localExports = {};
-      require('reflect-metadata');
 
       const vm = new VM({
         timeout: 2000,
