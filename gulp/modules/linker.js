@@ -87,6 +87,7 @@ const linkStyles = gulp =>
   .pipe(linker({
     scripts: [
       '.build/public/styles/*.css',
+      '!.build/public/styles/codemirror.css',
     ],
     startTag: '<!--STYLES-->',
     endTag: '<!--STYLES END-->',
