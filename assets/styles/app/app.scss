@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Unispace';
+  src: url('/fonts/unispace.ttf') format('truetype');
+}
+
 app {
   display: block;
   min-height: calc(100vh - #{$footerHeight} - #{$headerHeight});

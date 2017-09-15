@@ -62,6 +62,7 @@ else
 fi
 
 cp -r assets/imgs .build/public/imgs
+cp -r assets/fonts .build/public/fonts
 cp node_modules/codemirror/lib/codemirror.css .build/public/styles/codemirror.css
 
 scripts/ts
