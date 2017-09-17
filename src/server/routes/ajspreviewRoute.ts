@@ -6,7 +6,7 @@ const domino = require('domino');
 const ts = require('typescript');
 const { VM } = require('vm2');
 
-const ajs = require('ajs');
+const ajs = require('ajs').__express;
 
 import { Router, Response, NextFunction } from 'express';
 
@@ -17,8 +17,6 @@ const tmpDir = __dirname + '/../../../../../.tmp';
 rimraf(tmpDir, () => {
   fs.mkdirSync(tmpDir);
 });
-
-const fnc = ajs();
 
 declare let global: any;
 
@@ -96,7 +94,7 @@ export class AjspreviewRouter {
       module.exports = localExports;
     `);
 
-    fnc(null, { content: req.body.html, subPath: rand }, (err, content) => {
+    ajs(null, { content: req.body.html, subPath: rand }, (err, content) => {
       if (!err) {
         const window = domino.createWindow(content);
         const document = window.document;
