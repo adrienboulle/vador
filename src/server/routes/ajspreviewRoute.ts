@@ -6,7 +6,7 @@ const domino = require('domino');
 const ts = require('typescript');
 const { VM } = require('vm2');
 
-const ajs = require('ajs').__express;
+import { __express } from 'ajs';
 
 import { Router, Response, NextFunction } from 'express';
 
@@ -94,7 +94,7 @@ export class AjspreviewRouter {
       module.exports = localExports;
     `);
 
-    ajs(null, { content: req.body.html, subPath: rand }, (err, content) => {
+    __express(null, { content: req.body.html, subPath: rand }, (err, content) => {
       if (!err) {
         const window = domino.createWindow(content);
         const document = window.document;
