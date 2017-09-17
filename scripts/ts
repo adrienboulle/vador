@@ -3,6 +3,10 @@ gulp='node_modules/.bin/gulp'
 
 cp -r src/ .build/private/src/
 
+# We replace base.conf.ts by the proper conf file
+rm -r .build/private/src/client/shared/config/base.conf.ts
+mv .build/private/src/client/shared/config/${NODE_ENV}.conf.ts .build/private/src/client/shared/config/base.conf.ts
+
 $gulp keep:all
 $gulp inline:all
 

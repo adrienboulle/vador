@@ -54,7 +54,6 @@ mkdir .build/private
 mkdir .build/public
 mkdir .build/private/src
 
-
 if [ "$is_min" = 'true' ]; then
   $gulp sass:min
 else

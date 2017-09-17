@@ -4,7 +4,7 @@ const APP_CONFIG: AppConfig = {
   ENV: 'BASE_DUMMY',
   PROTOCOL: 'http://',
   DOMAIN: 'localhost',
-  PORT: '9876',
+  PORT: '1337',
   URL: getUrl,
   getCdn: getCdn,
 };

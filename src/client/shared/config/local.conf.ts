@@ -1,10 +1,10 @@
 import { AppConfig, getUrl, getCdn } from './config';
 
 const APP_CONFIG: AppConfig = {
-  ENV: 'DEV',
+  ENV: 'LOCAL',
   PROTOCOL: 'http://',
   DOMAIN: 'localhost',
-  PORT: '9876',
+  PORT: '1337',
   URL: getUrl,
   getCdn: getCdn,
 };
