@@ -8,6 +8,8 @@ import { config } from './config/base.conf';
 
 import { I18n } from './pipes/i18n.pipe';
 
+import { Cdn } from './directives/cdn.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { I18n } from './pipes/i18n.pipe';
   ],
   declarations: [
     I18n,
+    Cdn,
   ],
   exports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { I18n } from './pipes/i18n.pipe';
     FormsModule,
     ReactiveFormsModule,
     I18n,
+    Cdn,
   ],
 })
 export class SharedModule {}

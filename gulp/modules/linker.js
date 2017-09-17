@@ -1,6 +1,5 @@
 'use strict';
 
-const gulp = require('gulp');
 const linker = require('gulp-linker');
 
 let cdn1 = '';
