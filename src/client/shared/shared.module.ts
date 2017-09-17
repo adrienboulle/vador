@@ -3,34 +3,42 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { APP_CONFIG } from './config/config';
+import { APP_CONFIG, AppConfig } from './config/config';
 import { config } from './config/base.conf';
 
 import { I18n } from './pipes/i18n.pipe';
 
 import { Cdn } from './directives/cdn.directive';
 
+export function configFactory(): AppConfig {
+  return config;
+}
+
+const imports = [
+  CommonModule,
+  HttpClientModule,
+  FormsModule,
+  ReactiveFormsModule,
+];
+
+const declarations = [
+  I18n,
+  Cdn,
+];
+
 @NgModule({
   imports: [
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    ...imports,
   ],
   providers: [
-    { provide: APP_CONFIG, useValue: config },
+    { provide: APP_CONFIG, useFactory: configFactory },
   ],
   declarations: [
-    I18n,
-    Cdn,
+    ...declarations,
   ],
   exports: [
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    I18n,
-    Cdn,
+    ...imports,
+    ...declarations,
   ],
 })
 export class SharedModule {}
