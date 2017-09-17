@@ -4,6 +4,7 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const domino = require('domino');
 const ts = require('typescript');
+const { VM } = require('vm2');
 
 const ajs = require('ajs');
 

@@ -18,6 +18,7 @@ const upload = gulp =>
         '.build/public/js/**',
         '.build/public/styles/**',
         '.build/public/imgs/**',
+        '.build/public/fonts/**',
       ], { base: '.build/public' })
       .pipe(s3({
         Bucket: config.S3.bucketName,
