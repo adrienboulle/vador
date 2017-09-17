@@ -80,8 +80,8 @@ export class AjspreviewRouter {
             log: () => {},
           },
           require: val => {
-            if (val === 'ajs/lib/api') {
-              return require('ajs/lib/api');
+            if (val === 'ajs') {
+              return require('ajs');
             }
   
             throw Error('Not allowed to require ' + val);
