@@ -41,7 +41,6 @@
     "child_process": "1.0.2",
     "core-js": "2.5.1",
     "ejs": "2.5.7",
-    "express-minify-html": "0.11.4",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "4.0.0",
     "gulp-clean": "0.3.2",
