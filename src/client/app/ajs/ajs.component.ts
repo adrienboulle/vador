@@ -49,9 +49,9 @@ export class AjsComponent {
 
   constructor(private _http: HttpClient, private _localStorageService: LocalStorageService, private _renderer: Renderer2) {
     this.code = this._localStorageService.get('code') || {
-      html: '<app>\n  <hello-cmp></hello-cmp>\n</app>',
+      html: '<app>\n  <hello></hello>\n</app>',
       css: 'app {\n  display: block;\n  background-color: #DBF5F4;\n}',
-      ts: 'import { Component } from \'ajs\';\n\n@Component({\n  selector: \'hello-cmp\',\n  template: \'<div>Hello {{value}}</div>\',\n})\nexport class LoloComp {\n  public value: string;\n\n  constructor() {\n    this.value = \'World!\';\n  }\n}\n',
+      ts: 'import { Component, bootstrap, Service } from \'ajs\';\n\n@Service()\nexport class MyService {\n  public value: string;\n\n  constructor() {\n    this.value = \'World!\';\n  }\n}\n\n@Component({\n  selector: \'hello\',\n  template: \'<div>Hello {{value}}</div>\',\n})\nexport class Hello {\n  public value: string;\n\n  constructor(myService: MyService) {\n    this.value = myService.value;\n  }\n}\n\nbootstrap({\n\twindow,\n  components:[Hello],\n  services:[MyService],\n})',
     };
 
     if (!this.isSsr) {
