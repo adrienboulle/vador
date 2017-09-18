@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Service } from 'ajs/lib/api';
+Object.defineProperty(exports, "__esModule", { value: true });
+const api_1 = require("ajs/lib/api");
 let TotoComponent = class TotoComponent {
     constructor(service) {
         this.service = service;
@@ -15,7 +17,7 @@ let TotoComponent = class TotoComponent {
     }
 };
 TotoComponent = __decorate([
-    Component({
+    api_1.Component({
         selector: 'toto',
         template: `
     <h2>H2 {{val}}</h2>
@@ -26,19 +28,20 @@ TotoComponent = __decorate([
     }),
     __metadata("design:paramtypes", [TotoService])
 ], TotoComponent);
-export { TotoComponent };
+exports.TotoComponent = TotoComponent;
 let TotoService = class TotoService {
     constructor() {
         this.value = 'MY STR';
     }
 };
 TotoService = __decorate([
-    Service()
+    api_1.Service()
 ], TotoService);
-export { TotoService };
+exports.TotoService = TotoService;
 ajs.components = [
     TotoComponent,
 ];
 ajs.services = [
     TotoService,
 ];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY21wcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImNtcHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFFQSxxQ0FBaUQ7QUFXakQsSUFBYSxhQUFhLEdBQTFCO0lBR0UsWUFBbUIsT0FBb0I7UUFBcEIsWUFBTyxHQUFQLE9BQU8sQ0FBYTtRQUNyQyxJQUFJLENBQUMsR0FBRyxHQUFHLE9BQU8sQ0FBQyxLQUFLLENBQUM7SUFDM0IsQ0FBQztDQUNGLENBQUE7QUFOWSxhQUFhO0lBVHpCLGVBQVMsQ0FBQztRQUNULFFBQVEsRUFBRSxNQUFNO1FBQ2hCLFFBQVEsRUFBRTs7Ozs7R0FLVDtLQUNGLENBQUM7cUNBSTRCLFdBQVc7R0FINUIsYUFBYSxDQU16QjtBQU5ZLHNDQUFhO0FBUzFCLElBQWEsV0FBVyxHQUF4QjtJQURBO1FBRVMsVUFBSyxHQUFXLFFBQVEsQ0FBQztJQUNsQyxDQUFDO0NBQUEsQ0FBQTtBQUZZLFdBQVc7SUFEdkIsYUFBTyxFQUFFO0dBQ0csV0FBVyxDQUV2QjtBQUZZLGtDQUFXO0FBSXhCLEdBQUcsQ0FBQyxVQUFVLEdBQUc7SUFDZixhQUFhO0NBQ2QsQ0FBQztBQUNGLEdBQUcsQ0FBQyxRQUFRLEdBQUc7SUFDYixXQUFXO0NBQ1osQ0FBQyJ9

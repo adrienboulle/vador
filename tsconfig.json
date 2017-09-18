@@ -17,7 +17,7 @@
     "lib": ["es6", "dom"]
   },
   "include": [
-    "ajs/**/*.ts"
+    ".build/private/**/*.ts"
   ],
   "exclude": [
     "node_modules"

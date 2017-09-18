@@ -66,6 +66,9 @@ cp node_modules/codemirror/lib/codemirror.css .build/public/styles/codemirror.cs
 
 scripts/ts
 
+cp node_modules/typescript/lib/typescriptServices.js .build/public/js/typescriptServices.js
+cp node_modules/ajs/lib/render.umd.js .build/public/js/render.umd.js
+
 if [ "$wcdn" = 'true' ]; then
   $gulp upload:production
 fi
