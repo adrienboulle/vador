@@ -138,7 +138,7 @@ export class AjsComponent {
               };
               var require = function (val) {
                 if (val === 'ajs') {
-                  return window.ajs.api;
+                  return window.ajs;
                 }
               };
 
