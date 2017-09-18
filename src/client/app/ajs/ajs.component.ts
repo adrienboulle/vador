@@ -42,8 +42,8 @@ export class AjsComponent {
     },
   };
 
-  @ViewChild('iframeContainer')
-  private _iframeContainer: ElementRef;
+  @ViewChild('iframe')
+  public iframe: ElementRef;
 
   private _changeTimeout: any;
 
@@ -106,34 +106,51 @@ export class AjsComponent {
         getDirectories: () => [],
       }).emit();
 
-      for (let i = 0; i < this._iframeContainer.nativeElement.childNodes.length; i++) {
-        this._renderer.removeChild(this._iframeContainer.nativeElement, this._iframeContainer.nativeElement.childNodes[i]);
-      }
-
-      const iframe = this._renderer.createElement('iframe');
-      this._renderer.appendChild(this._iframeContainer.nativeElement, iframe);
-
-      iframe.contentWindow.document.open();
-      iframe.contentWindow.document.write(`
+      this.iframe.nativeElement.contentWindow.document.open();
+      this.iframe.nativeElement.contentWindow.document.write(`
         <!DOCTYPE html>
         <html>
           <head>
             <meta charset="UTF-8">
-            <script type="application/javascript" src="js/render.umd.js"></script>
             <style>
               ${this.code.css}
             </style>
           </head>
-
           <body>
             ${this.code.html}
             <script>
-              ${outputText}
+              var loaded = Promise.resolve();
+
+              if (!window.Zone) {
+                loaded = new Promise(function (resolve, reject) {
+                  var script = document.createElement('script');
+                  script.src = 'js/render.umd.js';
+                  script.type = 'text/javascript';
+                  script.onload = function () {
+                    resolve();
+                  }
+                  document.querySelector('head').appendChild(script);
+                });
+              }
+              var exports = {};
+              var module = {
+                exports: exports,
+              };
+              var require = function (val) {
+                if (val === 'ajs') {
+                  return window.ajs.api;
+                }
+              };
+
+              loaded
+              .then(function() {
+                ${outputText}
+              });
             </script>
           </body>
         </html>
       `);
-      iframe.contentWindow.document.close();
-    }, 200);
+      this.iframe.nativeElement.contentWindow.document.close();
+    }, 100);
   }
 }
