@@ -24,7 +24,6 @@ module.exports = {
     typescript: 'commonjs typescript',
     'body-parser': 'commonjs body-parser',
     vm2: 'commonjs vm2',
-    'express-minify-html': 'commonjs express-minify-html',
   },
   node: {
     __filename: true,

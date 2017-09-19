@@ -3,6 +3,10 @@
   src: url('/fonts/unispace.ttf') format('truetype');
 }
 
+img {
+  width: 100%;
+}
+
 app {
   display: block;
   min-height: calc(100vh - #{$footerHeight} - #{$headerHeight});
