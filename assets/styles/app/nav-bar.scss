@@ -36,7 +36,7 @@ nav-bar {
       opacity: 0;
       transform: translateX(0);
       z-index: $zIndexLinkOverlay;
-      top: 93%;
+      top: calc(100% - 0.3em);
       bottom: 0;
 
       transition: all ease-in-out $speedLinkOverayApear;
@@ -108,7 +108,8 @@ nav-bar {
         height: 100%;
 
         img {
-          height: 1.8em;
+          height: 28px;
+          width: initial;
           transition: all ease-in-out $speedSocialPulse;
         }
       }

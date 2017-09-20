@@ -23,21 +23,18 @@ export class AjsComponent {
       lineNumbers: true,
       tabSize: 2,
       matchBrackets: true,
-      lineWrapping: true,
       mode: 'text/html',
     },
     css: {
       lineNumbers: true,
       tabSize: 2,
       matchBrackets: true,
-      lineWrapping: true,
       mode: 'text/css',
     },
     ts: {
       lineNumbers: true,
       tabSize: 2,
       matchBrackets: true,
-      lineWrapping: true,
       mode: 'text/typescript',
     },
   };
@@ -50,8 +47,8 @@ export class AjsComponent {
   constructor(private _http: HttpClient, private _localStorageService: LocalStorageService, private _renderer: Renderer2) {
     this.code = this._localStorageService.get('code') || {
       html: '<app>\n  <hello></hello>\n</app>',
-      css: 'app {\n  display: block;\n  background-color: #DBF5F4;\n}',
-      ts: 'import { Component, bootstrap, Service, Input, Output, ElementRef } from \'ajs\';\n\n@Service()\nexport class MyService {\n  public initValue: string;\n\n  constructor() {\n    this.initValue = \'World!\';\n  }\n}\n\n@Component({\n  selector: \'hello\',\n  template: \'<div><input ajs-model="value"/><inner></inner></div><btn></btn>\',\n})\nexport class Hello {\n  public value: string;\n\tprivate alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";\n  constructor(myService: MyService) {\n    this.value = myService.initValue;\n  }\n  \n  clear(): void {\n  \tthis.value = \'\';\n  }\n  \n  rand(): void {\n  \tthis.value = \nArray(10).join().split(\',\').map(() => this.alpha.charAt(Math.floor(Math.random() * this.alpha.length))).join(\'\');\n\n  }\n}\n\n@Component({\n  selector: \'inner\',\n  template: \'<div>Input: {{value}}</div>\',\n})\nexport class Inner {\n  @Input()\n  public value: string;\n  \n  constructor(el: ElementRef) {\n  \tel.nativeElement.addEventListener(\'click\', () => {\n    \tthis.onClick();\n    });\n  }\n}\n\n@Component({\n  selector: \'btn\',\n  template: \'<button class="clear">Clear!</button><button class="rand">GenerateRand!</button>\',\n})\nexport class Btn {\n  @Output(\'clear\')\n  public onClickClear: Function;\n  \n  @Output(\'rand\')\n  public rand: Function;\n  \n  constructor(el: ElementRef) {\n  \tel.nativeElement.querySelector(\'button.clear\')\n    .addEventListener(\'click\', () => {\n    \tthis.onClickClear();\n    });\n\t  el.nativeElement.querySelector(\'button.rand\')\n    .addEventListener(\'click\', () => {\n    \tthis.rand();\n    });\n  });\n}\n\nbootstrap({\n\twindow,\n  components:[Hello, Inner, Btn],\n  services:[MyService],\n})\n',
+      css: 'app {display: block;background-color: #DBF5F4;}\n.bold {font-weight: bold;}\n.italic {font-style: italic;}\n.underline {text-decoration: underline;}\n.hidden {display: none}\n.tip {color: #55a963;font-weight: bold;}',
+      ts: 'import {Component, bootstrap, Service,\n        Input, Output, ElementRef } from \'ajs\';\n\n@Service()\nexport class ClassService {\n  public initValue: string;\n  public classes: string[] = [\'bold\', \'italic\', \'underline\'];\n\n  constructor() {\n    this.initValue = this.classes.join(\' \');\n  }\n  \n  public getRandClasses(): string {\n    const from = this.classes.slice(0);\n\n    return Array(Math.floor(Math.random() * 3) + 1)\n    .join()\n    .split(\',\')\n    .map(() => {\n      const randIdx = Math.floor(Math.random() * from.length);\n\t\t\tconst val = from.splice(randIdx, 1);\n\n      return val[0];\n    })\n    .join(\' \');\n  }\n}\n\n@Component({\n  selector: \'hello\',\n  template: `\n\t\t<div>\n\t\t\t<input class="{{value}}" ajs-model="value"/>\n\t\t\t<inner></inner>\n\t\t</div>\n\t\t<btn></btn>\n\t`,\n})\nexport class Hello {\n  public value: string;\n\n  constructor(private classService: ClassService) {\n    this.value = classService.initValue;\n  }\n\n  clear(): void {\n  \tthis.value = \'\';\n  }\n\n  rand(): void {\n  \tthis.value = this.classService.getRandClasses();\n  }\n}\n\n@Component({\n  selector: \'inner\',\n  template: `\n  \t<div>Input class: {{value}}</div>\n\t\t<span class="tip hidden">You can clear or add random classes!</span>\n\t`,\n})\nexport class Inner {\n  @Input()\n  public value: string;\n\n  constructor(private _el: ElementRef) {}\n\n  onInit() {\n    setTimeout(() => {\n      this._el.nativeElement.querySelector(\'.tip\').classList.remove(\'hidden\');\n    }, 3000);\n  }\n}\n\n@Component({\n  selector: \'btn\',\n  template: `\n\t\t<button ajs-click="onClickClear">\n\t\t\tClear!\n\t\t</button>\n\t\t<button ajs-click="rand">\n\t\t\tGenerateRand!\n\t\t</button>\n\t`,\n})\nexport class Btn {\n  @Output(\'clear\')\n  public onClickClear: Function;\n\n  @Output(\'rand\')\n  public rand: Function;\n\n  constructor() {}\n}\n\nbootstrap({\n\twindow,\n  components:[Hello, Inner, Btn],\n  services:[ClassService],\n});\n',
     };
 
     if (!this.isSsr) {
