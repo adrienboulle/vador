@@ -20,10 +20,7 @@ module.exports = {
     domino: 'commonjs domino',
     'express-ejs-layouts': 'commonjs express-ejs-layouts',
     'html-minifier': 'commonjs html-minifier',
-    rimraf: 'commonjs rimraf',
-    typescript: 'commonjs typescript',
     'body-parser': 'commonjs body-parser',
-    vm2: 'commonjs vm2',
   },
   node: {
     __filename: true,

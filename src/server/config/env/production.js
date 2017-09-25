@@ -1,6 +1,6 @@
 'use strict';
 
-// const keys = require('/Users/adboul/.keys');
+const keys = require('/Users/adboul/.keys');
 
 /**
  * Production environment settings
@@ -30,9 +30,9 @@ module.exports = {
   },
 
   S3: {
-    //accessKeyId: keys.accessKeyId,
+    accessKeyId: keys.accessKeyId,
     region: 'eu-west-1',
-    //secretAccessKey: keys.secretAccessKey,
+    secretAccessKey: keys.secretAccessKey,
     sslEnabled: true,
     bucketName: 'elasticbeanstalk-eu-west-1-995892470641',
   },

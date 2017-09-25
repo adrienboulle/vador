@@ -31,8 +31,6 @@ if [ "$IS_MIN" = 'true' ]; then
   mkdir .build/private/js
   cp .build/public/js/server-*.js .build/private/js/server-bundle.js
 else
-  mkdir .build/public/js
-  mkdir .build/public/src
   cp src/systemjs.config.app.js .build/public/js/
   cd .build/public/js/
   ln -s ../../../node_modules node_modules

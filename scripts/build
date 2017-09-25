@@ -51,8 +51,10 @@ fi
 
 mkdir .build
 mkdir .build/private
-mkdir .build/public
 mkdir .build/private/src
+mkdir .build/public
+mkdir .build/public/js
+mkdir .build/public/src
 
 if [ "$is_min" = 'true' ]; then
   $gulp sass:min
@@ -63,11 +65,10 @@ fi
 cp -r assets/imgs .build/public/imgs
 cp -r assets/fonts .build/public/fonts
 cp node_modules/codemirror/lib/codemirror.css .build/public/styles/codemirror.css
-
-scripts/ts
-
 cp node_modules/typescript/lib/typescriptServices.js .build/public/js/typescriptServices.js
 cp node_modules/ajs/lib/render.umd.js .build/public/js/render.umd.js
+
+scripts/ts
 
 if [ "$wcdn" = 'true' ]; then
   $gulp upload:production

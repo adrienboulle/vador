@@ -1,3 +1,5 @@
+'use strict';
+
 const nodemon = require('gulp-nodemon');
 
 module.exports = {

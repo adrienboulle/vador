@@ -58,9 +58,19 @@ const linkJs = gulp =>
   .pipe(linker({
     scripts: [
       '.build/public/js/ajs-*.js',
+      '.build/public/js/typescriptServices.js',
     ],
     startTag: '<!--SCRIPTS AJS-->',
     endTag: '<!--SCRIPTS AJS END-->',
+    fileTmpl: '<script src="' + cdn2 + '/%s"></script>',
+    appRoot: '.build/public/',
+  }))
+  .pipe(linker({
+    scripts: [
+      '.build/public/js/typescriptServices.js',
+    ],
+    startTag: '<!--SCRIPT TSSERVICES-->',
+    endTag: '<!--SCRIPT TSSERVICES END-->',
     fileTmpl: '<script src="' + cdn2 + '/%s"></script>',
     appRoot: '.build/public/',
   }))
@@ -86,7 +96,6 @@ const linkStyles = gulp =>
   .pipe(linker({
     scripts: [
       '.build/public/styles/*.css',
-      '!.build/public/styles/codemirror.css',
     ],
     startTag: '<!--STYLES-->',
     endTag: '<!--STYLES END-->',

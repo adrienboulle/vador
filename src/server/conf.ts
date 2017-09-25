@@ -1,4 +1,4 @@
-// tslint:disable:no-console
+// tslint:disable:no-console no-invalid-this
 
 'use strict';
 
@@ -28,7 +28,7 @@ const config: any = () => {
   config.env.verbose = verbose === 'true';
   config.env.cdn._index = -1;
   config.env.cdn.getCdn = function () {
-    return this[Object.keys(this).filter(function (key) {
+    return this[Object.keys(this).filter(function (key: any) {
       return typeof key === 'string';
     })[this._index++ % 3]];
   };

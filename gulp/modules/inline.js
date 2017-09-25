@@ -1,6 +1,5 @@
 'use strict';
 
-const gulp = require('gulp');
 const inlineTemplate = require('gulp-inline-ng2-template');
 const inlineStyles = require('gulp-inline-ng2-styles');
 
