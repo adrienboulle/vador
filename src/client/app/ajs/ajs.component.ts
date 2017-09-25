@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, Renderer2} from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { LocalStorageService } from 'angular-2-local-storage';

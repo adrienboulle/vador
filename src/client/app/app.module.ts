@@ -13,7 +13,7 @@ import { Link, NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 
 // KEEP-START-NODE_ENV:production
-import {enableProdMode} from '@angular/core';
+import { enableProdMode } from '@angular/core';
 enableProdMode();
 // KEEP-END
 
