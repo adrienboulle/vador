@@ -26,7 +26,7 @@ module.exports = {
 
   babelLoader: {
     test: /\.js$/,
-    loader: 'babel-loader?presets[]=es2015',
+    loader: 'babel-loader?presets[]=env',
   },
 
   ngRouterLoader: loaderType => {
