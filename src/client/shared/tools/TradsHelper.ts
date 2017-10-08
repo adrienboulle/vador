@@ -135,6 +135,10 @@ export const RAW_TRADS = {
     fr: 'Contactez-moi pour toute demande.',
     en: 'Contact me for any request.',
   },
+  contact_mail: {
+    fr: 'adri1.boulle@gmail.com',
+    en: 'adri1.boulle@gmail.com',
+  },
   contact_nav: {
     fr: 'Contact',
     en: 'Contact',
