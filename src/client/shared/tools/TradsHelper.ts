@@ -177,7 +177,7 @@ export const RAW_TRADS = {
   },
   ajs_h1: {
     fr: 'Testez AJS !',
-    en: 'tTest AJS!',
+    en: 'Test AJS!',
   },
   ajs_nav_link: {
     fr: '/ajs',
