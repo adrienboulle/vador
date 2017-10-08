@@ -121,7 +121,7 @@ export class AjsComponent {
               if (!window.Zone) {
                 loaded = new Promise(function (resolve, reject) {
                   var script = document.createElement('script');
-                  script.src = 'js/render.umd.js';
+                  script.src = '/js/render.umd.js';
                   script.type = 'text/javascript';
                   script.onload = function () {
                     resolve();

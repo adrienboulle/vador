@@ -21,9 +21,77 @@ export const RAW_TRADS = {
     fr: 'Vous cherchez un développeur polyvalent ?',
     en: 'You need a fullstack developer ?',
   },
-  home_p_prop: {
-    fr: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
-    en: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+  home_p_prop_1: {
+    fr: 'L\'objectif de ce site est de démontrer ma capacité à réaliser un projet complet en Angular2 avec mise en production Docker sur AWS, n\'hésitez pas à jeter un coup d\'oeil au ',
+    en: 'This website goal is to show my skills in a complete Angular2 project with Docker deployment on AWD, please look at the ',
+  },
+  home_p_prop_2: {
+    fr: 'code source.',
+    en: 'source code.',
+  },
+  home_p_prop_3: {
+    fr: 'Ce que j\'ai mis en place :',
+    en: 'What I have done :',
+  },
+  home_l_1: {
+    fr: 'Universal/SSR (server side rendering) avec @angular/platform-server',
+    en: 'Universal/SSR (server side rendering) with @angular/platform-server',
+  },
+  home_l_1_a: {
+    fr: 'https://github.com/adrienboulle/vador/blob/master/src/server/routes/indexRoute.ts#L47',
+    en: 'https://github.com/adrienboulle/vador/blob/master/src/server/routes/indexRoute.ts#L47',
+  },
+  home_l_2: {
+    fr: 'Un system automatisé de gestion des balises meta',
+    en: 'An automated meta generator',
+  },
+  home_l_2_a: {
+    fr: 'https://github.com/adrienboulle/vador/blob/master/src/client/shared/services/meta.service.ts',
+    en: 'https://github.com/adrienboulle/vador/blob/master/src/client/shared/services/meta.service.ts',
+  },
+  home_l_3: {
+    fr: 'Des scripts de build en CLI (command line interface)',
+    en: 'CLI (command line interface) build scripts',
+  },
+  home_l_3_a: {
+    fr: 'https://github.com/adrienboulle/vador/tree/master/scripts',
+    en: 'https://github.com/adrienboulle/vador/tree/master/scripts',
+  },
+  home_l_4: {
+    fr: 'i18n',
+    en: 'i18n',
+  },
+  home_l_4_a: {
+    fr: 'https://github.com/adrienboulle/vador/blob/master/src/client/shared/services/i18n.service.ts',
+    en: 'https://github.com/adrienboulle/vador/blob/master/src/client/shared/services/i18n.service.ts',
+  },
+  home_p_prop_4_1: {
+    fr: 'En bonus, un ',
+    en: 'Bonus: a ',
+  },
+  home_p_prop_4_2: {
+    fr: '"framework"',
+    en: '"framework"',
+  },
+  home_p_prop_4_3: {
+    fr: ' type AngularJS en Typescript que j\'ai écrit de zéro que vous pouvez tester ',
+    en: ' AngularJS-like in Typescript that I have written from scratch that you can test ',
+  },
+  home_p_prop_4_4: {
+    fr: 'ici',
+    en: 'here',
+  },
+  home_p_prop_4_5: {
+    fr: ' et un ',
+    en: ' and a ',
+  },
+  home_p_prop_4_6: {
+    fr: 'module',
+    en: 'module',
+  },
+  home_p_prop_4_7: {
+    fr: ' permettant d\'utiliser le framework ExpressJS avec des annotations Typescript et ajoutant quelques fonctionnalités.',
+    en: ' to use the framework ExpressJS with Typescript annotations and some additional features.',
   },
   home_h2_price: {
     fr: 'Tarif',
@@ -109,7 +177,7 @@ export const RAW_TRADS = {
   },
   ajs_h1: {
     fr: 'Testez AJS !',
-    en: 'test AJS!',
+    en: 'tTest AJS!',
   },
   ajs_nav_link: {
     fr: '/ajs',

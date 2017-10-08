@@ -2,15 +2,26 @@
   <h1>{{'home_h1' | i18n}}</h1>
 </section>
 <section class="pres">
-  <div class="logo">
-    <img class="toto" src="/imgs/dev.jpg">
-  </div>
-  <div>
+  <div class="logo"></div>
+  <div class="content">
     <h2>{{'home_h2_prop' | i18n}}</h2>
-    <p>{{'home_p_prop' | i18n}}</p>
-    <h2>{{'home_h2_price' | i18n}}</h2>
-    <p>{{'home_p_price_1' | i18n}}</p>
-    <p>{{'home_p_price_2' | i18n}}</p>
+    <p>
+      <span>{{'home_p_prop_1' | i18n}}</span>
+      <span><a class="animate" href="https://github.com/adrienboulle/vador">{{'home_p_prop_2' | i18n}}</a></span>
+    </p>
+    <p>{{'home_p_prop_3' | i18n}}</p>
+    <ul>
+      <li *ngFor="let n of [1, 2, 3, 4]"><a class="animate" href="{{'home_l_' + n + '_a' | i18n}}">{{'home_l_' + n | i18n}}</a></li>
+    </ul>
+    <p>
+      <span>{{'home_p_prop_4_1' | i18n }}</span>
+      <span><a class="animate" href="https://github.com/adrienboulle/ajs">{{'home_p_prop_4_2' | i18n }}</a></span>
+      <span>{{'home_p_prop_4_3' | i18n }}</span>
+      <span><a class="animate" href="/ajs">{{'home_p_prop_4_4' | i18n }}</a></span>
+      <span>{{'home_p_prop_4_5' | i18n }}</span>
+      <span><a class="animate" href="https://github.com/adrienboulle/exw">{{'home_p_prop_4_6' | i18n }}</a></span>
+      <span>{{'home_p_prop_4_7' | i18n }}</span>
+    </p>
   </div>
 </section>
 <section>

@@ -22,13 +22,13 @@ app {
       height: $headerHeightScrolled;
     }
 
-    .content {
+    .page-content {
       margin-top: $headerHeightScrolled;
     }
   }
 
   nav-bar,
-  .content,
+  .page-content,
   footer-bar {
     max-width: 1024px;
     margin-left: auto;
@@ -52,7 +52,7 @@ app {
     }
   }
 
-  .content {
+  .page-content {
     margin-top: $headerHeight;
     transition: margin-top $headerTransition;
   }

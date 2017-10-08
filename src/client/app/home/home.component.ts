@@ -9,8 +9,8 @@ declare let window: any;
 })
 export class HomeComponent {
   constructor() {
-    window.scroll = () => ScrollHelper.scrollTo({
-      position: document.getElementById('toto'),
-    });
+    // window.scroll = () => ScrollHelper.scrollTo({
+    //   position: document.getElementById('toto'),
+    // });
   }
 }

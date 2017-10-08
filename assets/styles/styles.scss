@@ -8,6 +8,8 @@
 @import 'helpers/**/*';
 @import 'app/*';
 
+// Scaffolding
+
 body {
   color: $black;
   font-family: "Roboto", sans-serif;
@@ -25,4 +27,15 @@ p {
 
 a {
   text-decoration: none;
+  color: lighten($b3, 20%);
+  cursor: pointer;
+
+  &.animate {
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      text-decoration: underline;
+      color: $b3;
+    }
+  }
 }
