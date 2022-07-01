@@ -14,7 +14,8 @@
     "express": "^4.15.5",
     "express-ejs-layouts": "^2.3.1",
     "html-minifier": "^3.5.5",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@angular/animations": "^5.0.0-beta.7",
@@ -81,6 +82,9 @@
   },
   "scripts": {
     "start": "nodemon .build/private/js/server-bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
